@@ -7,4 +7,4 @@ script:
   - bash -xve ./test/travis_package_make.bash
   - source ~/catkin_ws/devel/setup.bash
   - bash -xve ./test/travis_prepare_dummy_files.bash
-  - rostest pimouse_study test.launch
+  - rostest pimouse_study simple_drive.launch
