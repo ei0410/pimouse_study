@@ -30,7 +30,7 @@ class SimpleDrive():
         start = time.time()
 
         while not rospy.is_shutdown():
-            data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
+            data.linear.x = 0.1 if self.sensor_values.sum_all < 500 else 0.0
             elapsed_time = time.time() - start
             if elapsed_time > 3.0 :
                 data.linear.x = 0.0
