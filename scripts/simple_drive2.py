@@ -46,8 +46,8 @@ class SimpleDrive():
 
 if __name__ == '__main__':
     rospy.init_node('simple_drive')
-#    rospy.wait_for_service('/motor_on')
-#    rospy.wait_for_service('/motor_off')
-#    rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
-#    rospy.ServiceProxy('/motor_on', Trigger).call()
+    rospy.wait_for_service('/motor_on')
+    rospy.wait_for_service('/motor_off')
+    rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
+    rospy.ServiceProxy('/motor_on', Trigger).call()
     SimpleDrive().run()
