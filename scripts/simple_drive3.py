@@ -26,8 +26,14 @@ class SimpleDrive():
         data = Twist()
         start = time.time()
 
-        linear_time1 = 3.0
+        linear_time1 = 2.0
         turn_time1 = linear_time1 + 1.0
+        linear_time2 = turn_time1 + 2.0
+        turn_time2 = linear_time2 + 1.0
+        linear_time3 = turn_time2 + 2.0
+        turn_time3 = linear_time3 + 1.0
+        linear_time4 = turn_time3 + 2.0
+        turn_time4 = linear_time4 + 1.0
 
         while not rospy.is_shutdown():
             elapsed_time = time.time() - start
@@ -37,8 +43,23 @@ class SimpleDrive():
             elif elapsed_time < turn_time1:
                 data.linear.x = 0.0
                 data.angular.z = 2.0 if self.sensor_values.sum_all < 500 else 0.0
-            else :
+            elif elapsed_time < linear_time2:
                 data.angular.z = 0.0
+                data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
+            elif elapsed_time < turn_time2:
+                data.linear.x = 0.0
+                data.angular.z = 2.0 if self.sensor_values.sum_all < 500 else 0.0
+            elif elapsed_time < linear_time3:
+                data.angular.z = 0.0
+                data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
+            elif elapsed_time < turn_time3:
+                data.linear.x = 0.0
+                data.angular.z = 2.0 if self.sensor_values.sum_all < 500 else 0.0
+            elif elapsed_time < linear_time4:
+                data.angular.z = 0.0
+                data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
+            else :
+                data.linear.x = 0.0
 
             self.cmd_vel.publish(data)
             rospy.loginfo(data)
