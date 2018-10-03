@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import rospy, copy
 import time
-import math
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
@@ -23,13 +22,27 @@ class SimpleDrive():
         self.switch_values = messages
 
     def run(self):
+        rate = rospy.Rate(10)
         data = Twist()
         start = time.time()
 
-        while elapsed_time > 3.0:
+        linear_time1 = 3.0
+        turn_time1 = linear_time1 + 1.0
+
+        while not rospy.is_shutdown():
             elapsed_time = time.time() - start
-            data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
-        data.linear.x = 0.0
+
+            if elapsed_time < linear_time1:
+                data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
+            elif elapsed_time < turn_time1:
+                data.linear.x = 0.0
+                data.angular.z = 2.0 if self.sensor_values.sum_all < 500 else 0.0
+            else :
+                data.angular.z = 0.0
+
+            self.cmd_vel.publish(data)
+            rospy.loginfo(data)
+            rate.sleep()
 
 if __name__ == '__main__':
     rospy.init_node('simple_drive')
