@@ -35,13 +35,18 @@ class SimpleDrive():
         data = Twist()
         start = time.time()
 
+        print self.switch_values.value
+
         while not rospy.is_shutdown():
-            data.linear.x = 0.1 if self.sensor_values.sum_all < 500 else 0.0
+            data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
             elapsed_time = time.time() - start
             if elapsed_time > 3.0 :
                 data.linear.x = 0.0
+            data.angular.z = 0.2 if self.sensor_values.sum_all < 500 else 0.0
+            elapsed_time2 = time.time() - elapsed_time
+            if elapsed_time > 2.0:
+                data.angular.z = 0.0
             self.cmd_vel.publish(data)
-            print self.switch_values.value
             rate.sleep()
 
 if __name__ == '__main__':
