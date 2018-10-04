@@ -7,23 +7,24 @@ from pimouse_ros.msg import LightSensorValues
 from pimouse_ros.msg import SwitchValues
 from enum import Enum
 
-class state(Enum):
-    LINEAR1 = 1
-    TURN1   = 2
-    LINEAR2 = 3
-    TURN2   = 4
-    LINEAR3 = 5
-    TURN3   = 6
-    LINEAR4 = 7
-    TURN4   = 8
 
 threshold = 500
 data = Twist()
 
 class SimpleDrive():
-    def __init__(self):
-        self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+    class State(Enum):
+        LINEAR1 = 0
+        TURN1   = 1
+        LINEAR2 = 2
+        TURN2   = 3
+        LINEAR3 = 4
+        TURN3   = 5
+        LINEAR4 = 6
+        TURN4   = 7
 
+    def __init__(self):
+        self.state = self.State.LINEAR1
+        self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
         self.sensor_values = LightSensorValues()
         self.switch_values = SwitchValues()
         rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
@@ -39,7 +40,15 @@ class SimpleDrive():
         data.angular.z = 0.0
         data.linear.x = vel if self.sensor_values.sum_all < threshold else 0.0
 
+    def down(self, vel):
+        data.angular.z = 0.0
+        data.linear.x = vel if self.sensor_values.sum_all < threshold else 0.0
+
     def left(self, rot):
+        data.linear.x = 0.0
+        data.angular.z= rot if self.sensor_values.sum_all < threshold else 0.0
+
+    def right(self, rot):
         data.linear.x = 0.0
         data.angular.z= rot if self.sensor_values.sum_all < threshold else 0.0
 
@@ -57,6 +66,8 @@ class SimpleDrive():
 
         vel_x = 0.2
         rot_z = 2.0
+
+
 
         linear_time1 = 2.0
         turn_time1 = linear_time1 + 1.0
