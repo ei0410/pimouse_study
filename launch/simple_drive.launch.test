@@ -1,0 +1,6 @@
+<launch>
+    <machine name="robot" address="ubuntu" env-loader="/opt/ros/kinetic/env.sh" user="someone" />
+    <include file="$(find pimouse_ros)/launch/pimouse.launch" />
+    <node machine="robot" pkg="pimouse_study" name="simple_drive" type="simple_drive.py" required="true" output="screen" />
+    <test test-name="test_simple_drive" pkg="pimouse_study" type="travis_test_simple_drive.py" />
+</launch>

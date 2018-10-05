@@ -42,7 +42,7 @@ class SimpleDrive():
 
     def down(self, vel):
         data.angular.z = 0.0
-        data.linear.x = vel if self.sensor_values.sum_all < threshold else 0.0
+        data.linear.x = -vel if self.sensor_values.sum_all < threshold else 0.0
 
     def left(self, rot):
         data.linear.x = 0.0
@@ -50,7 +50,7 @@ class SimpleDrive():
 
     def right(self, rot):
         data.linear.x = 0.0
-        data.angular.z= rot if self.sensor_values.sum_all < threshold else 0.0
+        data.angular.z= -rot if self.sensor_values.sum_all < threshold else 0.0
 
     def stop(self):
         data.linear.x = 0.0
@@ -66,8 +66,6 @@ class SimpleDrive():
 
         vel_x = 0.2
         rot_z = 2.0
-
-
 
         linear_time1 = 2.0
         turn_time1 = linear_time1 + 1.0
@@ -88,11 +86,11 @@ class SimpleDrive():
             elif elapsed_time < linear_time2:
                 self.up(vel_x)
             elif elapsed_time < turn_time2:
-                self.left(rot_z)
+                self.right(rot_z)
             elif elapsed_time < linear_time3:
                 self.up(vel_x)
             elif elapsed_time < turn_time3:
-                self.left(rot_z)
+                self.right(rot_z)
             elif elapsed_time < linear_time4:
                 self.up(vel_x)
             else :
