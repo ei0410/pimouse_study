@@ -66,18 +66,18 @@ class SimpleDrive():
 
         vel_x = 0.2
         #rot_z = 2.0
-        rot_z = 1.5
+        rot_z = 1.0
 
         linear_time1 = 3.0
-        turn_time1 = linear_time1 + 1.5
+        turn_time1 = linear_time1 + 2.0
         #linear_time2 = turn_time1 + 3.0
         linear_time2 = turn_time1 + 5.0
-        turn_time2 = linear_time2 + 1.5
+        turn_time2 = linear_time2 + 2.0
         linear_time3 = turn_time2 + 3.0
-        turn_time3 = linear_time3 + 1.5
+        turn_time3 = linear_time3 + 2.0
         #linear_time4 = turn_time3 + 3.0
         linear_time4 = turn_time3 + 5.0
-        turn_time4 = linear_time4 + 1.5
+        turn_time4 = linear_time4 + 2.0
 
         while not rospy.is_shutdown():
             elapsed_time = time.time() - start
