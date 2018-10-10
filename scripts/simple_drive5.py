@@ -67,6 +67,7 @@ class SimpleDrive():
         self.threshold = 500
         self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
         self.sensor_values = LightSensorValues()
+#        self.switch_values = SwitchValues()
         rospy.Subscriber('/lightsensors', LightSensorValues, self.LightSensors)
 #        rospy.Subscriber('/switchs', SwitchValues, self.Switchs)
 
