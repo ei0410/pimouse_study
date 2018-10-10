@@ -6,6 +6,30 @@ from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
 from pimouse_ros.msg import SwitchValues
 from enum import Enum
+import smach
+import smach_ros
+
+class INIT(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['to_linear1', 'fail'])
+
+    def execute(self, userdata):
+        rospy.loginfo('a ')
+
+class Linear1(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['outcome1', 'outcome2'])
+        self.counter = 0
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state Linear')
+        rospy.sleep(1)
+        if self.counter < 3:
+            self.counter += 1
+            return 'outcome1'
+        else:
+            return 'outcome2'
+
 
 class StateMachine():
     class State(Enum):
@@ -111,6 +135,7 @@ class SimpleDrive():
         #rospy.loginfo(self.switch_values)
 
         while not rospy.is_shutdown():
+            """
             statemachine.update_state()
 
             if statemachine.state == statemachine.State.INIT:
@@ -135,6 +160,7 @@ class SimpleDrive():
                 self.stop()
             else :
                 self.stop()
+            """
 
             self.cmd_vel.publish(self.data)
             rospy.loginfo(statemachine.state)
@@ -143,8 +169,23 @@ class SimpleDrive():
 
 if __name__ == '__main__':
     rospy.init_node('simple_drive')
+    rospy.init_node('state_machine')
     rospy.wait_for_service('/motor_on')
     rospy.wait_for_service('/motor_off')
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
     rospy.ServiceProxy('/motor_on', Trigger).call()
+
+    sm = smach.StateMachine(outcomes=['SUCCESS', 'FAIL'])
+
+    with sm:
+        smach.StateMachine.add('INIT', Init(), transitions={'to_linear1':'LINEAR1','fail':'ERROR_STOP'})
+        smach.StateMachine.add('LINEAR1', Linear1(), transitions={'to_turn1':'TURN1','fail':'ERROR_STOP'})
+        smach.StateMachine.add('TURN1', Linear1(), transitions={'to_stop':'STOP','fail':'ERROR_STOP'})
+        smach.StateMachine.add('STOP',   Stop(),   transitions={'to_stop':'STOP'})
+        smach.StateMachine.add('ERROR_STOP',   Error_Stop(),   transitions={'to_stop':'FAIL'})
+
+    sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
+    sis.start()
+
+    outcome = sm.execute()
     SimpleDrive().run()
