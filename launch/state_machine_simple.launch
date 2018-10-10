@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find pimouse_ros)/launch/pimouse.launch" />
+    <node pkg="pimouse_study" name="state_machine_simple" type="state_machine_simple.py" required="true" output="screen" />
+</launch>
