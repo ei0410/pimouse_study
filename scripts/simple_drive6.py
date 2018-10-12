@@ -55,7 +55,7 @@ class StateMachine():
         self.x += self.vx * math.cos(self.th) * dt
         self.y += self.vx * math.sin(self.th) * dt
         self.th += self.vth * dt
-        rospy.loginfo("dt: " + str(dt))
+        rospy.loginfo("dt:     " + str(dt))
 
         self.last_time = self.cur_time
 
@@ -160,11 +160,11 @@ class SimpleDrive():
             statemachine.odom_update(vel_x, rot_z)
 
             self.cmd_vel.publish(self.data)
-            rospy.loginfo(statemachine.x)
-            rospy.loginfo(statemachine.y)
-            rospy.loginfo(statemachine.th)
-            rospy.loginfo(statemachine.state)
-            rospy.loginfo(self.data)
+            rospy.loginfo("x:      " + str(statemachine.x))
+            rospy.loginfo("y:      " + str(statemachine.y))
+            rospy.loginfo("th:     " + str(statemachine.th))
+            rospy.loginfo("status: " + str(statemachine.state))
+            rospy.loginfo("\n" + str(self.data))
             rate.sleep()
 
 if __name__ == '__main__':
