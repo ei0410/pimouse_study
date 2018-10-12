@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 import rospy, copy
 import time
+import math
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
 from pimouse_ros.msg import SwitchValues
 from enum import Enum
+
+    
 
 class StateMachine():
     class State(Enum):
@@ -23,6 +26,19 @@ class StateMachine():
     def __init__(self):
         self.state = self.State.INIT
         self.time_start = time.time()
+
+        self.x = 0.0
+        self.y = 0.0
+        self.th = 0.0
+
+        self.vx = 0.0
+        self.vth = 0.0
+
+    def odom_update(self):
+        dt = time.time() - self.time_start
+        self.x += self.vx * math.cos(self.th) * dt
+        self.y += self.vx * math.sin(self.th) * dt
+        self.th += self.vth * dt
 
     def update_state(self):
         standby_time = 1.0
@@ -112,6 +128,7 @@ class SimpleDrive():
 
         while not rospy.is_shutdown():
             statemachine.update_state()
+            statemachine.odom_update()
 
             if statemachine.state == statemachine.State.INIT:
                 self.stop()
@@ -137,6 +154,9 @@ class SimpleDrive():
                 self.stop()
 
             self.cmd_vel.publish(self.data)
+            rospy.loginfo(statemachine.x)
+            rospy.loginfo(statemachine.y)
+            rospy.loginfo(statemachine.th)
             rospy.loginfo(statemachine.state)
             rospy.loginfo(self.data)
             rate.sleep()

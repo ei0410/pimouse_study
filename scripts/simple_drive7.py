@@ -1,35 +1,129 @@
 #!/usr/bin/env python
+#encoding: utf8
 import rospy, copy
 import time
-from geometry_msgs.msg import Twist
+import sys, rospy, math, tf
+from geometry_msgs.msg import Twist, Quaternion, TransformStamped, Point
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
 from pimouse_ros.msg import SwitchValues
+from pimouse_ros.msg import MotorFreqs
+from pimouse_ros.srv import TimedMotion
+from nav_msgs.msg import Odometry
 from enum import Enum
-import smach
-import smach_ros
 
-class INIT(smach.State):
+class Motor():
     def __init__(self):
-        smach.State.__init__(self, outcomes=['to_linear1', 'fail'])
+        if not self.set_power(False): sys.exit(1)
 
-    def execute(self, userdata):
-        rospy.loginfo('a ')
+        rospy.on_shutdown(self.set_power)
+        self.sub_raw = rospy.Subscriber('motor_raw', MotorFreqs, self.callback_raw_freq)
+        self.sub_cmd_vel = rospy.Subscriber('cmd_vel', Twist, self.callback_cmd_vel)
+        self.srv_on = rospy.Service('motor_on', Trigger, self.callback_on)
+        self.srv_off = rospy.Service('motor_off', Trigger, self.callback_off)
+        self.srv_tm = rospy.Service('timed_motion', TimedMotion, self.callback_tm)
+        self.last_time = rospy.Time.now()
+        self.using_cmd_vel = False
 
-class Linear1(smach.State):
-    def __init__(self):
-        smach.State.__init__(self, outcomes=['outcome1', 'outcome2'])
-        self.counter = 0
+        self.pub_odom = rospy.Publisher('odom', Odometry, queue_size=10)
+        self.bc_odom = tf.TransformBroadcaster()
 
-    def execute(self, userdata):
-        rospy.loginfo('Executing state Linear')
-        rospy.sleep(1)
-        if self.counter < 3:
-            self.counter += 1
-            return 'outcome1'
-        else:
-            return 'outcome2'
+        self.x, self.y, self.th = 0.0, 0.0, 0.0
+        self.vx, self.vth = 0.0, 0.0
 
+        self.cur_time = rospy.Time.now()
+        self.last_time = self.cur_time
+
+    def set_power(self,onoff=False):
+        en = "/dev/rtmotoren0"
+        try:
+            with open(en,'w') as f:
+                f.write("1\n" if onoff else "0\n")
+            self.is_on = onoff
+            return True
+        except:
+            rospy.logerr("cannot write to " + en)
+
+        return False
+
+    def set_raw_freq(self,left_hz,right_hz):
+        if not self.is_on:
+            rospy.logerr("not enpowered")
+            return 
+        try:
+            with open("/dev/rtmotor_raw_l0",'w') as lf, open("/dev/rtmotor_raw_r0",'w') as rf: 
+                lf.write(str(int(round(left_hz))) + "\n")
+                rf.write(str(int(round(right_hz))) + "\n")
+        except:
+            rospy.logerr("cannot write to rtmotor_raw_*")
+
+    def callback_raw_freq(self,message):
+        self.set_raw_freq(message.left_hz,message.right_hz)
+
+    def callback_cmd_vel(self,message):
+        if not self.is_on:
+            return
+        self.vx = message.linear.x
+        self.vth = message.angular.z
+
+        forward_hz = 80000.0*message.linear.x/(9*math.pi)
+        rot_hz = 400.0*message.angular.z/math.pi
+        self.set_raw_freq(forward_hz-rot_hz, forward_hz+rot_hz)
+        self.using_cmd_vel = True
+        self.last_time = rospy.Time.now()
+
+    def send_odom(self):
+        self.cur_time = rospy.Time.now()
+
+        dt = self.cur_time.to_sec()
+        self.x += self.vx * math.cos(self.th) * dt
+        self.y += self.vx * math.sin(self.th) * dt
+        self.th += self.vth * dt
+
+        q = tf.transformations.quaternion_from_euler(0, 0, self.th)
+        self.bc_odom.sendTransform((self.x, self.y, 0.0), q, self.cur_time, "base_link", "odom")
+
+        odom = Odometry()
+        odom.header.stamp = self.cur_time
+        odom.header.frame_id = "odom"
+        odom.child_frame_id = "base_link"
+
+        odom.pose.pose.position = Point(self.x, self.y, 0)
+        odom.pose.pose.orientation = Quaternion(*q)
+
+        odom.twist.twist.linear.x = self.vx
+        odom.twist.twist.linear.y = 0
+        odom.twist.twist.angular.z = self.vth
+
+        self.pub_odom.publish(odom)
+
+        self.last_time = self.cur_time
+
+        rospy.loginfo(self.x)
+
+    def onoff_response(self,onoff):
+        d = TriggerResponse()
+        d.success = self.set_power(onoff)
+        d.message = "ON" if self.is_on else "OFF"
+        return d
+
+    def callback_on(self,message): return self.onoff_response(True)
+    def callback_off(self,message): return self.onoff_response(False)
+
+    def callback_tm(self,message):
+        if not self.is_on:
+            rospy.logerr("not enpowered")
+            return False
+
+        dev = "/dev/rtmotor0"
+        try:
+            with open(dev, 'w') as f:
+                f.write("%d %d %d\n" % (message.left_hz, message.right_hz, message.duration_ms))
+        except:
+            rospy.logerr("cannot write to " + dev)
+            return False
+
+        return True
 
 class StateMachine():
     class State(Enum):
@@ -128,6 +222,7 @@ class SimpleDrive():
     def run(self):
         rate = rospy.Rate(10)
         statemachine = StateMachine()
+        motor = Motor()
 
         vel_x = 0.2
         rot_z = 2.0
@@ -135,7 +230,6 @@ class SimpleDrive():
         #rospy.loginfo(self.switch_values)
 
         while not rospy.is_shutdown():
-            """
             statemachine.update_state()
 
             if statemachine.state == statemachine.State.INIT:
@@ -160,32 +254,20 @@ class SimpleDrive():
                 self.stop()
             else :
                 self.stop()
-            """
 
             self.cmd_vel.publish(self.data)
+            motor.send_odom()
+            rospy.loginfo("x:  " + str(motor.x))
+            rospy.loginfo("y:  " + str(motor.y))
+            rospy.loginfo("th: " + str(motor.th))
             rospy.loginfo(statemachine.state)
             rospy.loginfo(self.data)
             rate.sleep()
 
 if __name__ == '__main__':
     rospy.init_node('simple_drive')
-    rospy.init_node('state_machine')
     rospy.wait_for_service('/motor_on')
     rospy.wait_for_service('/motor_off')
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
     rospy.ServiceProxy('/motor_on', Trigger).call()
-
-    sm = smach.StateMachine(outcomes=['SUCCESS', 'FAIL'])
-
-    with sm:
-        smach.StateMachine.add('INIT', Init(), transitions={'to_linear1':'LINEAR1','fail':'ERROR_STOP'})
-        smach.StateMachine.add('LINEAR1', Linear1(), transitions={'to_turn1':'TURN1','fail':'ERROR_STOP'})
-        smach.StateMachine.add('TURN1', Linear1(), transitions={'to_stop':'STOP','fail':'ERROR_STOP'})
-        smach.StateMachine.add('STOP',   Stop(),   transitions={'to_stop':'STOP'})
-        smach.StateMachine.add('ERROR_STOP',   Error_Stop(),   transitions={'to_stop':'FAIL'})
-
-    sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
-    sis.start()
-
-    outcome = sm.execute()
     SimpleDrive().run()
