@@ -8,8 +8,6 @@ from pimouse_ros.msg import LightSensorValues
 from pimouse_ros.msg import SwitchValues
 from enum import Enum
 
-    
-
 class StateMachine():
     class State(Enum):
         INIT    = 0
@@ -27,6 +25,9 @@ class StateMachine():
         self.state = self.State.INIT
         self.time_start = time.time()
 
+        self.cur_time = rospy.Time.now()
+        self.last_time = self.cur_time
+
         self.x = 0.0
         self.y = 0.0
         self.th = 0.0
@@ -34,45 +35,53 @@ class StateMachine():
         self.vx = 0.0
         self.vth = 0.0
 
-    def odom_update(self):
-        dt = time.time() - self.time_start
+        self.standby_time = 1.0
+        self.linear_time1 = self.standby_time + 2.0
+        self.turn_time1   = self.linear_time1 + 1.0
+        self.linear_time2 = self.turn_time1   + 2.0
+        self.turn_time2   = self.linear_time2 + 1.0
+        self.linear_time3 = self.turn_time2   + 2.0
+        self.turn_time3   = self.linear_time3 + 1.0
+        self.linear_time4 = self.turn_time3   + 2.0
+        self.turn_time4   = self.linear_time4 + 1.0
+        self.stop_time    = self.turn_time4   + 2.0
+
+    def odom_update(self, vel, rot):
+        self.cur_time = rospy.Time.now()
+        dt = self.cur_time.to_sec() - self.last_time.to_sec()
+
+        self.vx = vel
+        self.vth = rot
         self.x += self.vx * math.cos(self.th) * dt
         self.y += self.vx * math.sin(self.th) * dt
         self.th += self.vth * dt
+        rospy.loginfo("dt: " + str(dt))
+
+        self.last_time = self.cur_time
 
     def update_state(self):
-        standby_time = 1.0
-        linear_time1 = standby_time + 2.0
-        turn_time1   = linear_time1 + 1.0
-        linear_time2 = turn_time1   + 2.0
-        turn_time2   = linear_time2 + 1.0
-        linear_time3 = turn_time2   + 2.0
-        turn_time3   = linear_time3 + 1.0
-        linear_time4 = turn_time3   + 2.0
-        turn_time4   = linear_time4 + 1.0
-        stop_time    = turn_time4   + 2.0
 
         elapsed_time = time.time() - self.time_start
 
-        if elapsed_time < standby_time:
+        if elapsed_time < self.standby_time:
             self.state = self.State.INIT
-        elif elapsed_time < linear_time1:
+        elif elapsed_time < self.linear_time1:
             self.state = self.State.LINEAR1
-        elif elapsed_time < turn_time1:
+        elif elapsed_time < self.turn_time1:
             self.state = self.State.TURN1
-        elif elapsed_time < linear_time2:
+        elif elapsed_time < self.linear_time2:
             self.state = self.State.LINEAR2
-        elif elapsed_time < turn_time2:
+        elif elapsed_time < self.turn_time2:
             self.state = self.State.TURN2
-        elif elapsed_time < linear_time3:
+        elif elapsed_time < self.linear_time3:
             self.state = self.State.LINEAR3
-        elif elapsed_time < turn_time3:
+        elif elapsed_time < self.turn_time3:
             self.state = self.State.TURN3
-        elif elapsed_time < linear_time4:
+        elif elapsed_time < self.linear_time4:
             self.state = self.State.LINEAR4
-        elif elapsed_time < turn_time4:
+        elif elapsed_time < self.turn_time4:
             self.state = self.State.TURN4
-        elif elapsed_time < stop_time:
+        elif elapsed_time < self.stop_time:
             self.state = self.State.STOP
         else:
             self.state = self.State.STOP
@@ -93,29 +102,11 @@ class SimpleDrive():
     def Switchs(self,messages):
         self.switch_values = messages
 
-    def up(self, vel):
-        self.data.angular.z = 0.0
+    def linear(self, vel):
         self.data.linear.x = vel if self.sensor_values.sum_all < self.threshold else 0.0
 
-    def down(self, vel):
-        self.data.angular.z = 0.0
-        self.data.linear.x = -vel if self.sensor_values.sum_all < self.threshold else 0.0
-
-    def left(self, rot):
-        self.data.linear.x = 0.0
-        self.data.angular.z= rot if self.sensor_values.sum_all < self.threshold else 0.0
-
-    def right(self, rot):
-        self.data.linear.x = 0.0
-        self.data.angular.z= -rot if self.sensor_values.sum_all < self.threshold else 0.0
-
-    def stop(self):
-        self.data.linear.x = 0.0
-        self.data.linear.y = 0.0
-        self.data.linear.z = 0.0
-        self.data.angular.x = 0.0
-        self.data.angular.y = 0.0
-        self.data.angular.z = 0.0
+    def turn(self, rot):
+        self.data.angular.z = rot if self.sensor_values.sum_all < self.threshold else 0.0
 
     def run(self):
         rate = rospy.Rate(10)
@@ -128,30 +119,45 @@ class SimpleDrive():
 
         while not rospy.is_shutdown():
             statemachine.update_state()
-            statemachine.odom_update()
 
             if statemachine.state == statemachine.State.INIT:
-                self.stop()
+                vel_x = 0.0
+                rot_z = 0.0
             elif statemachine.state == statemachine.State.LINEAR1:
-                self.up(vel_x)
+                vel_x = 0.2
+                rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN1:
-                self.left(rot_z)
+                vel_x = 0.0
+                rot_z = 2.0
             elif statemachine.state == statemachine.State.LINEAR2:
-                self.up(vel_x)
+                vel_x = 0.2
+                rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN2:
-                self.right(rot_z)
+                vel_x = 0.0
+                rot_z = -2.0
             elif statemachine.state == statemachine.State.LINEAR3:
-                self.up(vel_x)
+                vel_x = 0.2
+                rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN3:
-                self.right(rot_z)
+                vel_x = 0.0
+                rot_z = -2.0
             elif statemachine.state == statemachine.State.LINEAR4:
-                self.up(vel_x)
+                vel_x = 0.2
+                rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN4:
-                self.left(rot_z)
+                vel_x = 0.0
+                rot_z = 2.0
             elif statemachine.state == statemachine.State.STOP:
-                self.stop()
+                vel_x = 0.0
+                rot_z = 0.0
             else :
-                self.stop()
+                vel_x = 0.0
+                rot_z = 0.0
+
+            self.linear(vel_x)
+            self.turn(rot_z)
+
+            statemachine.odom_update(vel_x, rot_z)
 
             self.cmd_vel.publish(self.data)
             rospy.loginfo(statemachine.x)
