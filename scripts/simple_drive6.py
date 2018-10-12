@@ -113,7 +113,7 @@ class SimpleDrive():
         statemachine = StateMachine()
 
         vel_x = 0.2
-        rot_z = 2.0
+        rot_z = 1.57
 
         #rospy.loginfo(self.switch_values)
 
@@ -128,25 +128,25 @@ class SimpleDrive():
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN1:
                 vel_x = 0.0
-                rot_z = 2.0
+                rot_z = 1.57
             elif statemachine.state == statemachine.State.LINEAR2:
                 vel_x = 0.2
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN2:
                 vel_x = 0.0
-                rot_z = -2.0
+                rot_z = -1.57
             elif statemachine.state == statemachine.State.LINEAR3:
                 vel_x = 0.2
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN3:
                 vel_x = 0.0
-                rot_z = -2.0
+                rot_z = -1.57
             elif statemachine.state == statemachine.State.LINEAR4:
                 vel_x = 0.2
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN4:
                 vel_x = 0.0
-                rot_z = 2.0
+                rot_z = 1.57
             elif statemachine.state == statemachine.State.STOP:
                 vel_x = 0.0
                 rot_z = 0.0
