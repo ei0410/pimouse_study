@@ -1,0 +1,2278 @@
+[rospy.client][INFO] 2018-10-15 06:34:52,682: init_node, name[/simple_drive], pid[2514]
+[xmlrpc][INFO] 2018-10-15 06:34:52,684: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2018-10-15 06:34:52,686: Started XML-RPC server [http://ubuntu:43133/]
+[rospy.init][INFO] 2018-10-15 06:34:52,686: ROS Slave URI: [http://ubuntu:43133/]
+[rospy.impl.masterslave][INFO] 2018-10-15 06:34:52,687: _ready: http://ubuntu:43133/
+[rospy.registration][INFO] 2018-10-15 06:34:52,689: Registering with master node http://ubuntu:11311
+[xmlrpc][INFO] 2018-10-15 06:34:52,690: xml rpc node: starting XML-RPC server
+[rospy.init][INFO] 2018-10-15 06:34:52,787: registered with master
+[rospy.rosout][INFO] 2018-10-15 06:34:52,788: initializing /rosout core topic
+[rospy.rosout][INFO] 2018-10-15 06:34:52,799: connected to core topic /rosout
+[rospy.simtime][INFO] 2018-10-15 06:34:52,804: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rosout][INFO] 2018-10-15 06:34:52,873: dt:     0.000119924545288
+[rosout][INFO] 2018-10-15 06:34:52,874: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:52,875: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:52,876: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:52,877: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:52,878: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:52,878: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:52,880: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rospy.internal][INFO] 2018-10-15 06:34:52,895: topic[/cmd_vel] adding connection to [/motors], count 0
+[rospy.internal][INFO] 2018-10-15 06:34:52,913: topic[/switchs] adding connection to [http://ubuntu:46007/], count 0
+[rospy.internal][INFO] 2018-10-15 06:34:52,915: topic[/lightsensors] adding connection to [http://ubuntu:39589/], count 0
+[rosout][INFO] 2018-10-15 06:34:52,974: dt:     0.100114107132
+[rosout][INFO] 2018-10-15 06:34:52,975: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:52,975: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:52,976: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:52,978: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:52,979: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:52,979: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:52,980: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,074: dt:     0.100042819977
+[rosout][INFO] 2018-10-15 06:34:53,076: Lstep:  0
+[rospy.internal][INFO] 2018-10-15 06:34:53,077: topic[/rosout] adding connection to [/rosout], count 0
+[rosout][INFO] 2018-10-15 06:34:53,078: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,080: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,081: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,083: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,084: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,086: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,174: dt:     0.0999519824982
+[rosout][INFO] 2018-10-15 06:34:53,175: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,176: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,178: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,179: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,181: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,183: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,184: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,274: dt:     0.100139141083
+[rosout][INFO] 2018-10-15 06:34:53,276: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,279: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,281: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,284: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,286: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,289: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,292: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,374: dt:     0.1001060009
+[rosout][INFO] 2018-10-15 06:34:53,376: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,379: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,381: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,384: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,387: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,389: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,392: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,474: dt:     0.100000858307
+[rosout][INFO] 2018-10-15 06:34:53,476: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,479: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,481: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,484: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,486: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,489: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,491: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,574: dt:     0.100032091141
+[rosout][INFO] 2018-10-15 06:34:53,576: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,579: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,581: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,584: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,587: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,589: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,592: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,674: dt:     0.0999479293823
+[rosout][INFO] 2018-10-15 06:34:53,676: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,679: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,682: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,685: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,687: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,690: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,692: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,774: dt:     0.100028991699
+[rosout][INFO] 2018-10-15 06:34:53,776: Lstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,779: Rstep:  0
+[rosout][INFO] 2018-10-15 06:34:53,782: x:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,784: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,787: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,789: status: State.INIT
+[rosout][INFO] 2018-10-15 06:34:53,792: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,874: dt:     0.100037097931
+[rosout][INFO] 2018-10-15 06:34:53,876: Lstep:  57
+[rosout][INFO] 2018-10-15 06:34:53,879: Rstep:  57
+[rosout][INFO] 2018-10-15 06:34:53,881: x:      0.0200074195862
+[rosout][INFO] 2018-10-15 06:34:53,884: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,887: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,889: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:53,892: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:53,974: dt:     0.0999610424042
+[rosout][INFO] 2018-10-15 06:34:53,976: Lstep:  114
+[rosout][INFO] 2018-10-15 06:34:53,979: Rstep:  114
+[rosout][INFO] 2018-10-15 06:34:53,981: x:      0.039999628067
+[rosout][INFO] 2018-10-15 06:34:53,984: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:53,987: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:53,989: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:53,992: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,074: dt:     0.100005865097
+[rosout][INFO] 2018-10-15 06:34:54,076: Lstep:  171
+[rosout][INFO] 2018-10-15 06:34:54,079: Rstep:  171
+[rosout][INFO] 2018-10-15 06:34:54,081: x:      0.0600008010864
+[rosout][INFO] 2018-10-15 06:34:54,084: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,087: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,089: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,092: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,174: dt:     0.0999901294708
+[rosout][INFO] 2018-10-15 06:34:54,176: Lstep:  228
+[rosout][INFO] 2018-10-15 06:34:54,178: Rstep:  228
+[rosout][INFO] 2018-10-15 06:34:54,181: x:      0.0799988269806
+[rosout][INFO] 2018-10-15 06:34:54,184: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,187: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,189: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,192: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,274: dt:     0.100034952164
+[rosout][INFO] 2018-10-15 06:34:54,276: Lstep:  285
+[rosout][INFO] 2018-10-15 06:34:54,279: Rstep:  285
+[rosout][INFO] 2018-10-15 06:34:54,282: x:      0.100005817413
+[rosout][INFO] 2018-10-15 06:34:54,284: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,286: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,289: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,291: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,374: dt:     0.0999701023102
+[rosout][INFO] 2018-10-15 06:34:54,376: Lstep:  342
+[rosout][INFO] 2018-10-15 06:34:54,379: Rstep:  342
+[rosout][INFO] 2018-10-15 06:34:54,381: x:      0.119999837875
+[rosout][INFO] 2018-10-15 06:34:54,384: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,387: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,389: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,392: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,474: dt:     0.100000858307
+[rosout][INFO] 2018-10-15 06:34:54,476: Lstep:  399
+[rosout][INFO] 2018-10-15 06:34:54,479: Rstep:  399
+[rosout][INFO] 2018-10-15 06:34:54,481: x:      0.140000009537
+[rosout][INFO] 2018-10-15 06:34:54,484: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,486: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,489: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,491: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,574: dt:     0.100023984909
+[rosout][INFO] 2018-10-15 06:34:54,576: Lstep:  456
+[rosout][INFO] 2018-10-15 06:34:54,579: Rstep:  456
+[rosout][INFO] 2018-10-15 06:34:54,582: x:      0.160004806519
+[rosout][INFO] 2018-10-15 06:34:54,584: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,587: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,589: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,592: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,674: dt:     0.100054979324
+[rosout][INFO] 2018-10-15 06:34:54,676: Lstep:  513
+[rosout][INFO] 2018-10-15 06:34:54,679: Rstep:  513
+[rosout][INFO] 2018-10-15 06:34:54,682: x:      0.180015802383
+[rosout][INFO] 2018-10-15 06:34:54,684: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,687: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,689: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,692: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,774: dt:     0.0999200344086
+[rosout][INFO] 2018-10-15 06:34:54,776: Lstep:  570
+[rosout][INFO] 2018-10-15 06:34:54,779: Rstep:  570
+[rosout][INFO] 2018-10-15 06:34:54,781: x:      0.199999809265
+[rosout][INFO] 2018-10-15 06:34:54,784: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,787: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,789: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,792: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,874: dt:     0.100003004074
+[rosout][INFO] 2018-10-15 06:34:54,876: Lstep:  627
+[rosout][INFO] 2018-10-15 06:34:54,879: Rstep:  627
+[rosout][INFO] 2018-10-15 06:34:54,881: x:      0.22000041008
+[rosout][INFO] 2018-10-15 06:34:54,884: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,887: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,889: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,892: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:54,974: dt:     0.100023984909
+[rosout][INFO] 2018-10-15 06:34:54,976: Lstep:  684
+[rosout][INFO] 2018-10-15 06:34:54,979: Rstep:  684
+[rosout][INFO] 2018-10-15 06:34:54,982: x:      0.240005207062
+[rosout][INFO] 2018-10-15 06:34:54,985: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:54,987: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:54,990: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:54,993: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,074: dt:     0.100257158279
+[rosout][INFO] 2018-10-15 06:34:55,077: Lstep:  741
+[rosout][INFO] 2018-10-15 06:34:55,079: Rstep:  741
+[rosout][INFO] 2018-10-15 06:34:55,082: x:      0.260056638718
+[rosout][INFO] 2018-10-15 06:34:55,085: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,088: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,090: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,093: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,174: dt:     0.100018024445
+[rosout][INFO] 2018-10-15 06:34:55,177: Lstep:  798
+[rosout][INFO] 2018-10-15 06:34:55,179: Rstep:  798
+[rosout][INFO] 2018-10-15 06:34:55,182: x:      0.280060243607
+[rosout][INFO] 2018-10-15 06:34:55,185: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,187: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,190: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,193: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,274: dt:     0.0996849536896
+[rosout][INFO] 2018-10-15 06:34:55,276: Lstep:  854
+[rosout][INFO] 2018-10-15 06:34:55,279: Rstep:  854
+[rosout][INFO] 2018-10-15 06:34:55,282: x:      0.299997234344
+[rosout][INFO] 2018-10-15 06:34:55,284: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,287: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,290: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,293: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,374: dt:     0.100060939789
+[rosout][INFO] 2018-10-15 06:34:55,376: Lstep:  911
+[rosout][INFO] 2018-10-15 06:34:55,379: Rstep:  911
+[rosout][INFO] 2018-10-15 06:34:55,382: x:      0.320009422302
+[rosout][INFO] 2018-10-15 06:34:55,385: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,387: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,390: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,393: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,474: dt:     0.099986076355
+[rosout][INFO] 2018-10-15 06:34:55,476: Lstep:  968
+[rosout][INFO] 2018-10-15 06:34:55,479: Rstep:  968
+[rosout][INFO] 2018-10-15 06:34:55,482: x:      0.340006637573
+[rosout][INFO] 2018-10-15 06:34:55,485: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,487: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,490: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,493: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,574: dt:     0.100258827209
+[rosout][INFO] 2018-10-15 06:34:55,577: Lstep:  1025
+[rosout][INFO] 2018-10-15 06:34:55,579: Rstep:  1025
+[rosout][INFO] 2018-10-15 06:34:55,582: x:      0.360058403015
+[rosout][INFO] 2018-10-15 06:34:55,585: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,588: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,590: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,593: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,674: dt:     0.0997130870819
+[rosout][INFO] 2018-10-15 06:34:55,676: Lstep:  1081
+[rosout][INFO] 2018-10-15 06:34:55,679: Rstep:  1081
+[rosout][INFO] 2018-10-15 06:34:55,682: x:      0.380001020432
+[rosout][INFO] 2018-10-15 06:34:55,685: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,688: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,690: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,693: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,774: dt:     0.100044965744
+[rosout][INFO] 2018-10-15 06:34:55,776: Lstep:  1138
+[rosout][INFO] 2018-10-15 06:34:55,779: Rstep:  1138
+[rosout][INFO] 2018-10-15 06:34:55,782: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:55,785: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,787: th:     0.0
+[rosout][INFO] 2018-10-15 06:34:55,790: status: State.LINEAR1
+[rosout][INFO] 2018-10-15 06:34:55,793: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:55,874: dt:     0.100258111954
+[rosout][INFO] 2018-10-15 06:34:55,877: Lstep:  1112
+[rosout][INFO] 2018-10-15 06:34:55,879: Rstep:  1164
+[rosout][INFO] 2018-10-15 06:34:55,882: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:55,884: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,887: th:     0.200516223907
+[rosout][INFO] 2018-10-15 06:34:55,889: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:55,892: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:55,974: dt:     0.0997059345245
+[rosout][INFO] 2018-10-15 06:34:55,976: Lstep:  1087
+[rosout][INFO] 2018-10-15 06:34:55,979: Rstep:  1189
+[rosout][INFO] 2018-10-15 06:34:55,981: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:55,984: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:55,987: th:     0.399928092957
+[rosout][INFO] 2018-10-15 06:34:55,989: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:55,992: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:56,074: dt:     0.10001206398
+[rosout][INFO] 2018-10-15 06:34:56,076: Lstep:  1062
+[rosout][INFO] 2018-10-15 06:34:56,079: Rstep:  1214
+[rosout][INFO] 2018-10-15 06:34:56,082: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:56,084: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:56,087: th:     0.599952220917
+[rosout][INFO] 2018-10-15 06:34:56,089: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:56,092: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:56,174: dt:     0.0999839305878
+[rosout][INFO] 2018-10-15 06:34:56,176: Lstep:  1037
+[rosout][INFO] 2018-10-15 06:34:56,179: Rstep:  1239
+[rosout][INFO] 2018-10-15 06:34:56,181: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:56,184: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:56,186: th:     0.799920082092
+[rosout][INFO] 2018-10-15 06:34:56,189: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:56,191: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:56,274: dt:     0.100013017654
+[rosout][INFO] 2018-10-15 06:34:56,276: Lstep:  1012
+[rosout][INFO] 2018-10-15 06:34:56,279: Rstep:  1264
+[rosout][INFO] 2018-10-15 06:34:56,281: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:56,284: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:56,286: th:     0.999946117401
+[rosout][INFO] 2018-10-15 06:34:56,288: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:56,291: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:56,374: dt:     0.0999948978424
+[rosout][INFO] 2018-10-15 06:34:56,376: Lstep:  987
+[rosout][INFO] 2018-10-15 06:34:56,378: Rstep:  1289
+[rosout][INFO] 2018-10-15 06:34:56,381: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:56,385: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:56,387: th:     1.19993591309
+[rosout][INFO] 2018-10-15 06:34:56,390: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:56,392: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:56,474: dt:     0.100028038025
+[rosout][INFO] 2018-10-15 06:34:56,476: Lstep:  962
+[rosout][INFO] 2018-10-15 06:34:56,479: Rstep:  1314
+[rosout][INFO] 2018-10-15 06:34:56,481: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:56,484: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:56,487: th:     1.39999198914
+[rosout][INFO] 2018-10-15 06:34:56,489: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:56,492: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:56,574: dt:     0.0999610424042
+[rosout][INFO] 2018-10-15 06:34:56,576: Lstep:  937
+[rosout][INFO] 2018-10-15 06:34:56,579: Rstep:  1339
+[rosout][INFO] 2018-10-15 06:34:56,581: x:      0.40001001358
+[rosout][INFO] 2018-10-15 06:34:56,584: y:      0.0
+[rosout][INFO] 2018-10-15 06:34:56,587: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:56,590: status: State.TURN1
+[rosout][INFO] 2018-10-15 06:34:56,592: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:34:56,674: dt:     0.10002207756
+[rosout][INFO] 2018-10-15 06:34:56,676: Lstep:  994
+[rosout][INFO] 2018-10-15 06:34:56,679: Rstep:  1396
+[rosout][INFO] 2018-10-15 06:34:56,681: x:      0.399427612373
+[rosout][INFO] 2018-10-15 06:34:56,684: y:      0.0199959358074
+[rosout][INFO] 2018-10-15 06:34:56,686: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:56,689: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:56,692: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:56,774: dt:     0.100003004074
+[rosout][INFO] 2018-10-15 06:34:56,776: Lstep:  1051
+[rosout][INFO] 2018-10-15 06:34:56,779: Rstep:  1453
+[rosout][INFO] 2018-10-15 06:34:56,782: x:      0.398845322226
+[rosout][INFO] 2018-10-15 06:34:56,784: y:      0.0399880585346
+[rosout][INFO] 2018-10-15 06:34:56,787: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:56,789: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:56,792: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:56,874: dt:     0.0999939441681
+[rosout][INFO] 2018-10-15 06:34:56,876: Lstep:  1108
+[rosout][INFO] 2018-10-15 06:34:56,879: Rstep:  1510
+[rosout][INFO] 2018-10-15 06:34:56,881: x:      0.398263084832
+[rosout][INFO] 2018-10-15 06:34:56,884: y:      0.0599783700486
+[rosout][INFO] 2018-10-15 06:34:56,887: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:56,889: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:56,892: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:56,974: dt:     0.0999870300293
+[rosout][INFO] 2018-10-15 06:34:56,976: Lstep:  1165
+[rosout][INFO] 2018-10-15 06:34:56,979: Rstep:  1567
+[rosout][INFO] 2018-10-15 06:34:56,982: x:      0.397680887697
+[rosout][INFO] 2018-10-15 06:34:56,984: y:      0.0799672993211
+[rosout][INFO] 2018-10-15 06:34:56,987: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:56,989: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:56,992: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,074: dt:     0.100015878677
+[rosout][INFO] 2018-10-15 06:34:57,076: Lstep:  1222
+[rosout][INFO] 2018-10-15 06:34:57,079: Rstep:  1624
+[rosout][INFO] 2018-10-15 06:34:57,081: x:      0.397098522584
+[rosout][INFO] 2018-10-15 06:34:57,084: y:      0.0999619958774
+[rosout][INFO] 2018-10-15 06:34:57,086: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,089: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,091: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,174: dt:     0.0999960899353
+[rosout][INFO] 2018-10-15 06:34:57,176: Lstep:  1279
+[rosout][INFO] 2018-10-15 06:34:57,179: Rstep:  1681
+[rosout][INFO] 2018-10-15 06:34:57,182: x:      0.396516272696
+[rosout][INFO] 2018-10-15 06:34:57,184: y:      0.119952736363
+[rosout][INFO] 2018-10-15 06:34:57,187: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,189: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,192: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,274: dt:     0.0999999046326
+[rosout][INFO] 2018-10-15 06:34:57,276: Lstep:  1336
+[rosout][INFO] 2018-10-15 06:34:57,279: Rstep:  1738
+[rosout][INFO] 2018-10-15 06:34:57,282: x:      0.395934000596
+[rosout][INFO] 2018-10-15 06:34:57,284: y:      0.139944239465
+[rosout][INFO] 2018-10-15 06:34:57,287: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,289: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,292: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,374: dt:     0.10000705719
+[rosout][INFO] 2018-10-15 06:34:57,376: Lstep:  1393
+[rosout][INFO] 2018-10-15 06:34:57,379: Rstep:  1795
+[rosout][INFO] 2018-10-15 06:34:57,381: x:      0.395351686848
+[rosout][INFO] 2018-10-15 06:34:57,384: y:      0.159937172471
+[rosout][INFO] 2018-10-15 06:34:57,386: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,389: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,391: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,474: dt:     0.100024938583
+[rosout][INFO] 2018-10-15 06:34:57,476: Lstep:  1450
+[rosout][INFO] 2018-10-15 06:34:57,478: Rstep:  1852
+[rosout][INFO] 2018-10-15 06:34:57,481: x:      0.394769268982
+[rosout][INFO] 2018-10-15 06:34:57,484: y:      0.179933680241
+[rosout][INFO] 2018-10-15 06:34:57,486: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,489: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,492: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,574: dt:     0.0999670028687
+[rosout][INFO] 2018-10-15 06:34:57,576: Lstep:  1507
+[rosout][INFO] 2018-10-15 06:34:57,579: Rstep:  1909
+[rosout][INFO] 2018-10-15 06:34:57,581: x:      0.39418718846
+[rosout][INFO] 2018-10-15 06:34:57,584: y:      0.199918605779
+[rosout][INFO] 2018-10-15 06:34:57,587: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,589: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,592: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,674: dt:     0.0999891757965
+[rosout][INFO] 2018-10-15 06:34:57,676: Lstep:  1564
+[rosout][INFO] 2018-10-15 06:34:57,679: Rstep:  1966
+[rosout][INFO] 2018-10-15 06:34:57,682: x:      0.39360497883
+[rosout][INFO] 2018-10-15 06:34:57,685: y:      0.219907964023
+[rosout][INFO] 2018-10-15 06:34:57,688: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,690: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,693: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,774: dt:     0.100005865097
+[rosout][INFO] 2018-10-15 06:34:57,776: Lstep:  1621
+[rosout][INFO] 2018-10-15 06:34:57,779: Rstep:  2023
+[rosout][INFO] 2018-10-15 06:34:57,782: x:      0.393022672024
+[rosout][INFO] 2018-10-15 06:34:57,785: y:      0.239900658712
+[rosout][INFO] 2018-10-15 06:34:57,787: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,789: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,792: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,874: dt:     0.100001096725
+[rosout][INFO] 2018-10-15 06:34:57,876: Lstep:  1678
+[rosout][INFO] 2018-10-15 06:34:57,879: Rstep:  2080
+[rosout][INFO] 2018-10-15 06:34:57,881: x:      0.392440392983
+[rosout][INFO] 2018-10-15 06:34:57,884: y:      0.259892400131
+[rosout][INFO] 2018-10-15 06:34:57,886: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,889: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,891: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:57,974: dt:     0.100030899048
+[rosout][INFO] 2018-10-15 06:34:57,976: Lstep:  1735
+[rosout][INFO] 2018-10-15 06:34:57,979: Rstep:  2137
+[rosout][INFO] 2018-10-15 06:34:57,981: x:      0.39185794041
+[rosout][INFO] 2018-10-15 06:34:57,984: y:      0.279890099488
+[rosout][INFO] 2018-10-15 06:34:57,986: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:57,989: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:57,991: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:58,074: dt:     0.0999610424042
+[rosout][INFO] 2018-10-15 06:34:58,076: Lstep:  1792
+[rosout][INFO] 2018-10-15 06:34:58,079: Rstep:  2194
+[rosout][INFO] 2018-10-15 06:34:58,081: x:      0.391275894594
+[rosout][INFO] 2018-10-15 06:34:58,084: y:      0.299873833439
+[rosout][INFO] 2018-10-15 06:34:58,087: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:58,089: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:58,092: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:58,174: dt:     0.100019931793
+[rosout][INFO] 2018-10-15 06:34:58,176: Lstep:  1849
+[rosout][INFO] 2018-10-15 06:34:58,179: Rstep:  2251
+[rosout][INFO] 2018-10-15 06:34:58,181: x:      0.390693505881
+[rosout][INFO] 2018-10-15 06:34:58,184: y:      0.319869340275
+[rosout][INFO] 2018-10-15 06:34:58,186: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:58,189: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:58,191: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:58,274: dt:     0.100038051605
+[rosout][INFO] 2018-10-15 06:34:58,279: Lstep:  1906
+[rosout][INFO] 2018-10-15 06:34:58,282: Rstep:  2308
+[rosout][INFO] 2018-10-15 06:34:58,285: x:      0.390111011662
+[rosout][INFO] 2018-10-15 06:34:58,287: y:      0.339868469537
+[rosout][INFO] 2018-10-15 06:34:58,290: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:58,292: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:58,295: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:58,374: dt:     0.0999538898468
+[rosout][INFO] 2018-10-15 06:34:58,376: Lstep:  1963
+[rosout][INFO] 2018-10-15 06:34:58,379: Rstep:  2365
+[rosout][INFO] 2018-10-15 06:34:58,381: x:      0.389529007493
+[rosout][INFO] 2018-10-15 06:34:58,384: y:      0.359850773582
+[rosout][INFO] 2018-10-15 06:34:58,386: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:58,388: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:58,391: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:58,474: dt:     0.0999960899353
+[rosout][INFO] 2018-10-15 06:34:58,476: Lstep:  2020
+[rosout][INFO] 2018-10-15 06:34:58,479: Rstep:  2422
+[rosout][INFO] 2018-10-15 06:34:58,481: x:      0.388946757605
+[rosout][INFO] 2018-10-15 06:34:58,484: y:      0.379841514068
+[rosout][INFO] 2018-10-15 06:34:58,487: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:58,490: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:58,492: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:58,574: dt:     0.100292921066
+[rosout][INFO] 2018-10-15 06:34:58,577: Lstep:  2077
+[rosout][INFO] 2018-10-15 06:34:58,579: Rstep:  2479
+[rosout][INFO] 2018-10-15 06:34:58,582: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:58,585: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:58,588: th:     1.59991407394
+[rosout][INFO] 2018-10-15 06:34:58,590: status: State.LINEAR2
+[rosout][INFO] 2018-10-15 06:34:58,593: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:58,674: dt:     0.0997080802917
+[rosout][INFO] 2018-10-15 06:34:58,676: Lstep:  2102
+[rosout][INFO] 2018-10-15 06:34:58,679: Rstep:  2454
+[rosout][INFO] 2018-10-15 06:34:58,682: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:58,684: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:58,687: th:     1.40049791336
+[rosout][INFO] 2018-10-15 06:34:58,689: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:58,692: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:58,774: dt:     0.100008964539
+[rosout][INFO] 2018-10-15 06:34:58,776: Lstep:  2127
+[rosout][INFO] 2018-10-15 06:34:58,779: Rstep:  2429
+[rosout][INFO] 2018-10-15 06:34:58,782: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:58,784: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:58,787: th:     1.20047998428
+[rosout][INFO] 2018-10-15 06:34:58,790: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:58,792: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:58,874: dt:     0.100290060043
+[rosout][INFO] 2018-10-15 06:34:58,877: Lstep:  2153
+[rosout][INFO] 2018-10-15 06:34:58,879: Rstep:  2403
+[rosout][INFO] 2018-10-15 06:34:58,882: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:58,885: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:58,888: th:     0.999899864197
+[rosout][INFO] 2018-10-15 06:34:58,890: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:58,893: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:58,974: dt:     0.0997378826141
+[rosout][INFO] 2018-10-15 06:34:58,976: Lstep:  2178
+[rosout][INFO] 2018-10-15 06:34:58,979: Rstep:  2378
+[rosout][INFO] 2018-10-15 06:34:58,982: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:58,985: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:58,987: th:     0.800424098969
+[rosout][INFO] 2018-10-15 06:34:58,990: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:58,992: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:59,074: dt:     0.0999841690063
+[rosout][INFO] 2018-10-15 06:34:59,076: Lstep:  2203
+[rosout][INFO] 2018-10-15 06:34:59,079: Rstep:  2353
+[rosout][INFO] 2018-10-15 06:34:59,081: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:59,084: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:59,086: th:     0.600455760956
+[rosout][INFO] 2018-10-15 06:34:59,089: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:59,092: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:59,174: dt:     0.100021839142
+[rosout][INFO] 2018-10-15 06:34:59,176: Lstep:  2228
+[rosout][INFO] 2018-10-15 06:34:59,179: Rstep:  2328
+[rosout][INFO] 2018-10-15 06:34:59,181: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:59,184: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:59,187: th:     0.400412082672
+[rosout][INFO] 2018-10-15 06:34:59,189: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:59,192: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:59,274: dt:     0.0999720096588
+[rosout][INFO] 2018-10-15 06:34:59,276: Lstep:  2253
+[rosout][INFO] 2018-10-15 06:34:59,278: Rstep:  2303
+[rosout][INFO] 2018-10-15 06:34:59,281: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:59,284: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:59,286: th:     0.200468063354
+[rosout][INFO] 2018-10-15 06:34:59,289: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:59,291: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:59,374: dt:     0.0999929904938
+[rosout][INFO] 2018-10-15 06:34:59,376: Lstep:  2278
+[rosout][INFO] 2018-10-15 06:34:59,379: Rstep:  2278
+[rosout][INFO] 2018-10-15 06:34:59,382: x:      0.38836277935
+[rosout][INFO] 2018-10-15 06:34:59,384: y:      0.399891595615
+[rosout][INFO] 2018-10-15 06:34:59,387: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:34:59,389: status: State.TURN2
+[rosout][INFO] 2018-10-15 06:34:59,392: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:34:59,474: dt:     0.10001707077
+[rosout][INFO] 2018-10-15 06:34:59,476: Lstep:  2335
+[rosout][INFO] 2018-10-15 06:34:59,479: Rstep:  2335
+[rosout][INFO] 2018-10-15 06:34:59,481: x:      0.40836619118
+[rosout][INFO] 2018-10-15 06:34:59,484: y:      0.399901238908
+[rosout][INFO] 2018-10-15 06:34:59,486: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:34:59,489: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:34:59,492: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:59,574: dt:     0.100003957748
+[rosout][INFO] 2018-10-15 06:34:59,576: Lstep:  2392
+[rosout][INFO] 2018-10-15 06:34:59,579: Rstep:  2392
+[rosout][INFO] 2018-10-15 06:34:59,581: x:      0.428366980405
+[rosout][INFO] 2018-10-15 06:34:59,584: y:      0.399910880936
+[rosout][INFO] 2018-10-15 06:34:59,586: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:34:59,589: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:34:59,592: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:59,674: dt:     0.100291013718
+[rosout][INFO] 2018-10-15 06:34:59,677: Lstep:  2449
+[rosout][INFO] 2018-10-15 06:34:59,679: Rstep:  2449
+[rosout][INFO] 2018-10-15 06:34:59,682: x:      0.448425180818
+[rosout][INFO] 2018-10-15 06:34:59,685: y:      0.399920550642
+[rosout][INFO] 2018-10-15 06:34:59,688: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:34:59,691: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:34:59,693: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:59,774: dt:     0.0996870994568
+[rosout][INFO] 2018-10-15 06:34:59,776: Lstep:  2505
+[rosout][INFO] 2018-10-15 06:34:59,779: Rstep:  2505
+[rosout][INFO] 2018-10-15 06:34:59,781: x:      0.468362598392
+[rosout][INFO] 2018-10-15 06:34:59,785: y:      0.39993016212
+[rosout][INFO] 2018-10-15 06:34:59,787: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:34:59,789: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:34:59,792: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:59,874: dt:     0.100270032883
+[rosout][INFO] 2018-10-15 06:34:59,877: Lstep:  2562
+[rosout][INFO] 2018-10-15 06:34:59,879: Rstep:  2562
+[rosout][INFO] 2018-10-15 06:34:59,881: x:      0.488416602639
+[rosout][INFO] 2018-10-15 06:34:59,885: y:      0.399939829803
+[rosout][INFO] 2018-10-15 06:34:59,888: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:34:59,890: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:34:59,893: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:34:59,974: dt:     0.100020885468
+[rosout][INFO] 2018-10-15 06:34:59,977: Lstep:  2619
+[rosout][INFO] 2018-10-15 06:34:59,979: Rstep:  2619
+[rosout][INFO] 2018-10-15 06:34:59,982: x:      0.508420777408
+[rosout][INFO] 2018-10-15 06:34:59,985: y:      0.399949473463
+[rosout][INFO] 2018-10-15 06:34:59,987: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:34:59,990: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:34:59,993: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,074: dt:     0.0999629497528
+[rosout][INFO] 2018-10-15 06:35:00,077: Lstep:  2676
+[rosout][INFO] 2018-10-15 06:35:00,079: Rstep:  2676
+[rosout][INFO] 2018-10-15 06:35:00,082: x:      0.528413365035
+[rosout][INFO] 2018-10-15 06:35:00,085: y:      0.399959111538
+[rosout][INFO] 2018-10-15 06:35:00,088: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,090: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,093: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,174: dt:     0.099769115448
+[rosout][INFO] 2018-10-15 06:35:00,176: Lstep:  2732
+[rosout][INFO] 2018-10-15 06:35:00,179: Rstep:  2732
+[rosout][INFO] 2018-10-15 06:35:00,181: x:      0.548367185806
+[rosout][INFO] 2018-10-15 06:35:00,184: y:      0.399968730924
+[rosout][INFO] 2018-10-15 06:35:00,186: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,189: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,192: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,274: dt:     0.100009918213
+[rosout][INFO] 2018-10-15 06:35:00,276: Lstep:  2789
+[rosout][INFO] 2018-10-15 06:35:00,279: Rstep:  2789
+[rosout][INFO] 2018-10-15 06:35:00,281: x:      0.568369167124
+[rosout][INFO] 2018-10-15 06:35:00,284: y:      0.399978373527
+[rosout][INFO] 2018-10-15 06:35:00,287: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,289: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,292: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,374: dt:     0.1000020504
+[rosout][INFO] 2018-10-15 06:35:00,376: Lstep:  2846
+[rosout][INFO] 2018-10-15 06:35:00,379: Rstep:  2846
+[rosout][INFO] 2018-10-15 06:35:00,382: x:      0.58836957488
+[rosout][INFO] 2018-10-15 06:35:00,384: y:      0.399988015372
+[rosout][INFO] 2018-10-15 06:35:00,387: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,389: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,392: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,474: dt:     0.0999851226807
+[rosout][INFO] 2018-10-15 06:35:00,476: Lstep:  2903
+[rosout][INFO] 2018-10-15 06:35:00,479: Rstep:  2903
+[rosout][INFO] 2018-10-15 06:35:00,481: x:      0.608366597093
+[rosout][INFO] 2018-10-15 06:35:00,484: y:      0.399997655584
+[rosout][INFO] 2018-10-15 06:35:00,487: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,489: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,492: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,574: dt:     0.0999748706818
+[rosout][INFO] 2018-10-15 06:35:00,576: Lstep:  2960
+[rosout][INFO] 2018-10-15 06:35:00,579: Rstep:  2960
+[rosout][INFO] 2018-10-15 06:35:00,581: x:      0.628361568906
+[rosout][INFO] 2018-10-15 06:35:00,585: y:      0.400007294808
+[rosout][INFO] 2018-10-15 06:35:00,587: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,590: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,593: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,674: dt:     0.100301980972
+[rosout][INFO] 2018-10-15 06:35:00,677: Lstep:  3017
+[rosout][INFO] 2018-10-15 06:35:00,679: Rstep:  3017
+[rosout][INFO] 2018-10-15 06:35:00,682: x:      0.648421962769
+[rosout][INFO] 2018-10-15 06:35:00,686: y:      0.400016965571
+[rosout][INFO] 2018-10-15 06:35:00,688: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,690: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,693: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,774: dt:     0.0997090339661
+[rosout][INFO] 2018-10-15 06:35:00,776: Lstep:  3073
+[rosout][INFO] 2018-10-15 06:35:00,779: Rstep:  3073
+[rosout][INFO] 2018-10-15 06:35:00,782: x:      0.668363767245
+[rosout][INFO] 2018-10-15 06:35:00,784: y:      0.400026579164
+[rosout][INFO] 2018-10-15 06:35:00,787: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,789: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,792: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,874: dt:     0.0999970436096
+[rosout][INFO] 2018-10-15 06:35:00,876: Lstep:  3130
+[rosout][INFO] 2018-10-15 06:35:00,879: Rstep:  3130
+[rosout][INFO] 2018-10-15 06:35:00,882: x:      0.688363173643
+[rosout][INFO] 2018-10-15 06:35:00,884: y:      0.400036220526
+[rosout][INFO] 2018-10-15 06:35:00,887: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,889: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,891: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:00,974: dt:     0.100013017654
+[rosout][INFO] 2018-10-15 06:35:00,976: Lstep:  3187
+[rosout][INFO] 2018-10-15 06:35:00,979: Rstep:  3187
+[rosout][INFO] 2018-10-15 06:35:00,981: x:      0.708365774849
+[rosout][INFO] 2018-10-15 06:35:00,984: y:      0.400045863428
+[rosout][INFO] 2018-10-15 06:35:00,987: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:00,989: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:00,992: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:01,074: dt:     0.100013971329
+[rosout][INFO] 2018-10-15 06:35:01,076: Lstep:  3244
+[rosout][INFO] 2018-10-15 06:35:01,079: Rstep:  3244
+[rosout][INFO] 2018-10-15 06:35:01,082: x:      0.728368566791
+[rosout][INFO] 2018-10-15 06:35:01,085: y:      0.400055506422
+[rosout][INFO] 2018-10-15 06:35:01,087: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:01,089: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:01,092: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:01,174: dt:     0.100009918213
+[rosout][INFO] 2018-10-15 06:35:01,176: Lstep:  3301
+[rosout][INFO] 2018-10-15 06:35:01,179: Rstep:  3301
+[rosout][INFO] 2018-10-15 06:35:01,181: x:      0.748370548109
+[rosout][INFO] 2018-10-15 06:35:01,184: y:      0.400065149026
+[rosout][INFO] 2018-10-15 06:35:01,187: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:01,189: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:01,192: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:01,274: dt:     0.0999720096588
+[rosout][INFO] 2018-10-15 06:35:01,276: Lstep:  3358
+[rosout][INFO] 2018-10-15 06:35:01,279: Rstep:  3358
+[rosout][INFO] 2018-10-15 06:35:01,281: x:      0.768364947717
+[rosout][INFO] 2018-10-15 06:35:01,284: y:      0.400074787974
+[rosout][INFO] 2018-10-15 06:35:01,287: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:01,289: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:01,292: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:01,374: dt:     0.10000705719
+[rosout][INFO] 2018-10-15 06:35:01,376: Lstep:  3415
+[rosout][INFO] 2018-10-15 06:35:01,379: Rstep:  3415
+[rosout][INFO] 2018-10-15 06:35:01,381: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:01,384: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:01,386: th:     0.000482082366943
+[rosout][INFO] 2018-10-15 06:35:01,389: status: State.LINEAR3
+[rosout][INFO] 2018-10-15 06:35:01,392: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:01,474: dt:     0.10001707077
+[rosout][INFO] 2018-10-15 06:35:01,476: Lstep:  3440
+[rosout][INFO] 2018-10-15 06:35:01,479: Rstep:  3390
+[rosout][INFO] 2018-10-15 06:35:01,481: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:01,484: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:01,486: th:     -0.199552059174
+[rosout][INFO] 2018-10-15 06:35:01,489: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:01,492: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:01,574: dt:     0.0999858379364
+[rosout][INFO] 2018-10-15 06:35:01,576: Lstep:  3465
+[rosout][INFO] 2018-10-15 06:35:01,578: Rstep:  3365
+[rosout][INFO] 2018-10-15 06:35:01,581: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:01,584: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:01,586: th:     -0.399523735046
+[rosout][INFO] 2018-10-15 06:35:01,588: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:01,591: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:01,674: dt:     0.100013017654
+[rosout][INFO] 2018-10-15 06:35:01,676: Lstep:  3490
+[rosout][INFO] 2018-10-15 06:35:01,679: Rstep:  3340
+[rosout][INFO] 2018-10-15 06:35:01,681: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:01,684: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:01,686: th:     -0.599549770355
+[rosout][INFO] 2018-10-15 06:35:01,689: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:01,691: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:01,774: dt:     0.0999851226807
+[rosout][INFO] 2018-10-15 06:35:01,776: Lstep:  3515
+[rosout][INFO] 2018-10-15 06:35:01,779: Rstep:  3315
+[rosout][INFO] 2018-10-15 06:35:01,781: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:01,784: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:01,786: th:     -0.799520015717
+[rosout][INFO] 2018-10-15 06:35:01,789: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:01,791: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:01,874: dt:     0.100016832352
+[rosout][INFO] 2018-10-15 06:35:01,876: Lstep:  3540
+[rosout][INFO] 2018-10-15 06:35:01,879: Rstep:  3290
+[rosout][INFO] 2018-10-15 06:35:01,881: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:01,884: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:01,886: th:     -0.99955368042
+[rosout][INFO] 2018-10-15 06:35:01,889: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:01,891: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:01,974: dt:     0.100036144257
+[rosout][INFO] 2018-10-15 06:35:01,976: Lstep:  3565
+[rosout][INFO] 2018-10-15 06:35:01,979: Rstep:  3265
+[rosout][INFO] 2018-10-15 06:35:01,981: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:01,984: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:01,987: th:     -1.19962596893
+[rosout][INFO] 2018-10-15 06:35:01,989: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:01,992: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:02,074: dt:     0.099956035614
+[rosout][INFO] 2018-10-15 06:35:02,076: Lstep:  3590
+[rosout][INFO] 2018-10-15 06:35:02,079: Rstep:  3240
+[rosout][INFO] 2018-10-15 06:35:02,081: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:02,084: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:02,086: th:     -1.39953804016
+[rosout][INFO] 2018-10-15 06:35:02,088: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:02,091: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:02,174: dt:     0.100008010864
+[rosout][INFO] 2018-10-15 06:35:02,176: Lstep:  3615
+[rosout][INFO] 2018-10-15 06:35:02,179: Rstep:  3215
+[rosout][INFO] 2018-10-15 06:35:02,181: x:      0.788366356831
+[rosout][INFO] 2018-10-15 06:35:02,184: y:      0.400084430301
+[rosout][INFO] 2018-10-15 06:35:02,186: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,189: status: State.TURN3
+[rosout][INFO] 2018-10-15 06:35:02,191: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: -2.0
+[rosout][INFO] 2018-10-15 06:35:02,274: dt:     0.0999999046326
+[rosout][INFO] 2018-10-15 06:35:02,276: Lstep:  3672
+[rosout][INFO] 2018-10-15 06:35:02,279: Rstep:  3272
+[rosout][INFO] 2018-10-15 06:35:02,281: x:      0.787791281951
+[rosout][INFO] 2018-10-15 06:35:02,284: y:      0.38009271887
+[rosout][INFO] 2018-10-15 06:35:02,287: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,289: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,292: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:02,374: dt:     0.0999879837036
+[rosout][INFO] 2018-10-15 06:35:02,376: Lstep:  3729
+[rosout][INFO] 2018-10-15 06:35:02,379: Rstep:  3329
+[rosout][INFO] 2018-10-15 06:35:02,382: x:      0.787216275624
+[rosout][INFO] 2018-10-15 06:35:02,385: y:      0.360103390639
+[rosout][INFO] 2018-10-15 06:35:02,387: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,389: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,392: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:02,474: dt:     0.100018978119
+[rosout][INFO] 2018-10-15 06:35:02,476: Lstep:  3786
+[rosout][INFO] 2018-10-15 06:35:02,479: Rstep:  3386
+[rosout][INFO] 2018-10-15 06:35:02,481: x:      0.786641091057
+[rosout][INFO] 2018-10-15 06:35:02,484: y:      0.340107866088
+[rosout][INFO] 2018-10-15 06:35:02,487: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,489: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,492: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:02,574: dt:     0.0999939441681
+[rosout][INFO] 2018-10-15 06:35:02,576: Lstep:  3843
+[rosout][INFO] 2018-10-15 06:35:02,579: Rstep:  3443
+[rosout][INFO] 2018-10-15 06:35:02,581: x:      0.786066050454
+[rosout][INFO] 2018-10-15 06:35:02,584: y:      0.320117346257
+[rosout][INFO] 2018-10-15 06:35:02,586: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,588: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,591: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:02,674: dt:     0.100008010864
+[rosout][INFO] 2018-10-15 06:35:02,676: Lstep:  3900
+[rosout][INFO] 2018-10-15 06:35:02,679: Rstep:  3500
+[rosout][INFO] 2018-10-15 06:35:02,681: x:      0.785490928956
+[rosout][INFO] 2018-10-15 06:35:02,684: y:      0.30012401425
+[rosout][INFO] 2018-10-15 06:35:02,686: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,688: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,691: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:02,774: dt:     0.099995136261
+[rosout][INFO] 2018-10-15 06:35:02,776: Lstep:  3957
+[rosout][INFO] 2018-10-15 06:35:02,779: Rstep:  3557
+[rosout][INFO] 2018-10-15 06:35:02,781: x:      0.784915881497
+[rosout][INFO] 2018-10-15 06:35:02,784: y:      0.280133256099
+[rosout][INFO] 2018-10-15 06:35:02,787: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,789: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,792: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:02,874: dt:     0.0999939441681
+[rosout][INFO] 2018-10-15 06:35:02,876: Lstep:  4014
+[rosout][INFO] 2018-10-15 06:35:02,878: Rstep:  3614
+[rosout][INFO] 2018-10-15 06:35:02,882: x:      0.784340840894
+[rosout][INFO] 2018-10-15 06:35:02,884: y:      0.260142736268
+[rosout][INFO] 2018-10-15 06:35:02,886: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,889: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,891: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:02,974: dt:     0.100008010864
+[rosout][INFO] 2018-10-15 06:35:02,976: Lstep:  4071
+[rosout][INFO] 2018-10-15 06:35:02,979: Rstep:  3671
+[rosout][INFO] 2018-10-15 06:35:02,981: x:      0.783765719396
+[rosout][INFO] 2018-10-15 06:35:02,984: y:      0.240149404261
+[rosout][INFO] 2018-10-15 06:35:02,986: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:02,989: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:02,991: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,074: dt:     0.100032091141
+[rosout][INFO] 2018-10-15 06:35:03,076: Lstep:  4128
+[rosout][INFO] 2018-10-15 06:35:03,079: Rstep:  3728
+[rosout][INFO] 2018-10-15 06:35:03,081: x:      0.783190459419
+[rosout][INFO] 2018-10-15 06:35:03,084: y:      0.22015125819
+[rosout][INFO] 2018-10-15 06:35:03,087: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,089: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,092: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,174: dt:     0.100003957748
+[rosout][INFO] 2018-10-15 06:35:03,176: Lstep:  4185
+[rosout][INFO] 2018-10-15 06:35:03,178: Rstep:  3785
+[rosout][INFO] 2018-10-15 06:35:03,181: x:      0.78261536123
+[rosout][INFO] 2018-10-15 06:35:03,184: y:      0.200158736471
+[rosout][INFO] 2018-10-15 06:35:03,186: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,189: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,191: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,274: dt:     0.0999629497528
+[rosout][INFO] 2018-10-15 06:35:03,281: Lstep:  4242
+[rosout][INFO] 2018-10-15 06:35:03,284: Rstep:  3842
+[rosout][INFO] 2018-10-15 06:35:03,287: x:      0.782040498868
+[rosout][INFO] 2018-10-15 06:35:03,290: y:      0.18017441296
+[rosout][INFO] 2018-10-15 06:35:03,292: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,294: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,297: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,374: dt:     0.100004911423
+[rosout][INFO] 2018-10-15 06:35:03,376: Lstep:  4299
+[rosout][INFO] 2018-10-15 06:35:03,378: Rstep:  3899
+[rosout][INFO] 2018-10-15 06:35:03,381: x:      0.781465395195
+[rosout][INFO] 2018-10-15 06:35:03,384: y:      0.160181700585
+[rosout][INFO] 2018-10-15 06:35:03,386: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,389: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,391: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,474: dt:     0.0999979972839
+[rosout][INFO] 2018-10-15 06:35:03,476: Lstep:  4356
+[rosout][INFO] 2018-10-15 06:35:03,479: Rstep:  3956
+[rosout][INFO] 2018-10-15 06:35:03,481: x:      0.780890331283
+[rosout][INFO] 2018-10-15 06:35:03,484: y:      0.140190370466
+[rosout][INFO] 2018-10-15 06:35:03,487: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,489: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,492: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,574: dt:     0.0999820232391
+[rosout][INFO] 2018-10-15 06:35:03,576: Lstep:  4413
+[rosout][INFO] 2018-10-15 06:35:03,579: Rstep:  4013
+[rosout][INFO] 2018-10-15 06:35:03,581: x:      0.780315359234
+[rosout][INFO] 2018-10-15 06:35:03,584: y:      0.120202233834
+[rosout][INFO] 2018-10-15 06:35:03,586: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,589: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,591: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,674: dt:     0.100071191788
+[rosout][INFO] 2018-10-15 06:35:03,676: Lstep:  4470
+[rosout][INFO] 2018-10-15 06:35:03,679: Rstep:  4070
+[rosout][INFO] 2018-10-15 06:35:03,681: x:      0.779739874398
+[rosout][INFO] 2018-10-15 06:35:03,684: y:      0.100196270868
+[rosout][INFO] 2018-10-15 06:35:03,686: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,689: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,691: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,774: dt:     0.0999419689178
+[rosout][INFO] 2018-10-15 06:35:03,776: Lstep:  4527
+[rosout][INFO] 2018-10-15 06:35:03,778: Rstep:  4127
+[rosout][INFO] 2018-10-15 06:35:03,781: x:      0.779165132692
+[rosout][INFO] 2018-10-15 06:35:03,784: y:      0.0802161417884
+[rosout][INFO] 2018-10-15 06:35:03,786: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,789: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,792: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,874: dt:     0.0999939441681
+[rosout][INFO] 2018-10-15 06:35:03,876: Lstep:  4584
+[rosout][INFO] 2018-10-15 06:35:03,879: Rstep:  4184
+[rosout][INFO] 2018-10-15 06:35:03,881: x:      0.778590092088
+[rosout][INFO] 2018-10-15 06:35:03,884: y:      0.0602256219573
+[rosout][INFO] 2018-10-15 06:35:03,886: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,888: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,891: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:03,974: dt:     0.100027084351
+[rosout][INFO] 2018-10-15 06:35:03,976: Lstep:  4641
+[rosout][INFO] 2018-10-15 06:35:03,979: Rstep:  4241
+[rosout][INFO] 2018-10-15 06:35:03,982: x:      0.778014860904
+[rosout][INFO] 2018-10-15 06:35:03,985: y:      0.0402284768303
+[rosout][INFO] 2018-10-15 06:35:03,987: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:03,989: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:03,993: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:04,074: dt:     0.100234985352
+[rosout][INFO] 2018-10-15 06:35:04,077: Lstep:  4698
+[rosout][INFO] 2018-10-15 06:35:04,079: Rstep:  4298
+[rosout][INFO] 2018-10-15 06:35:04,082: x:      0.777438434132
+[rosout][INFO] 2018-10-15 06:35:04,085: y:      0.0201897686954
+[rosout][INFO] 2018-10-15 06:35:04,088: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:04,090: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:04,093: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:04,174: dt:     0.0999619960785
+[rosout][INFO] 2018-10-15 06:35:04,177: Lstep:  4755
+[rosout][INFO] 2018-10-15 06:35:04,179: Rstep:  4355
+[rosout][INFO] 2018-10-15 06:35:04,182: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,185: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,187: th:     -1.59955406189
+[rosout][INFO] 2018-10-15 06:35:04,190: status: State.LINEAR4
+[rosout][INFO] 2018-10-15 06:35:04,193: 
+linear: 
+  x: 0.2
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:04,274: dt:     0.10004901886
+[rosout][INFO] 2018-10-15 06:35:04,277: Lstep:  4730
+[rosout][INFO] 2018-10-15 06:35:04,279: Rstep:  4380
+[rosout][INFO] 2018-10-15 06:35:04,283: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,285: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,288: th:     -1.39945602417
+[rosout][INFO] 2018-10-15 06:35:04,291: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,293: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:04,374: dt:     0.100011825562
+[rosout][INFO] 2018-10-15 06:35:04,377: Lstep:  4705
+[rosout][INFO] 2018-10-15 06:35:04,379: Rstep:  4405
+[rosout][INFO] 2018-10-15 06:35:04,382: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,385: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,387: th:     -1.19943237305
+[rosout][INFO] 2018-10-15 06:35:04,390: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,392: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:04,474: dt:     0.0997350215912
+[rosout][INFO] 2018-10-15 06:35:04,476: Lstep:  4680
+[rosout][INFO] 2018-10-15 06:35:04,479: Rstep:  4430
+[rosout][INFO] 2018-10-15 06:35:04,481: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,484: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,487: th:     -0.999962329865
+[rosout][INFO] 2018-10-15 06:35:04,489: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,492: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:04,574: dt:     0.100011110306
+[rosout][INFO] 2018-10-15 06:35:04,576: Lstep:  4655
+[rosout][INFO] 2018-10-15 06:35:04,579: Rstep:  4455
+[rosout][INFO] 2018-10-15 06:35:04,581: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,584: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,587: th:     -0.799940109253
+[rosout][INFO] 2018-10-15 06:35:04,589: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,592: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:04,674: dt:     0.0999879837036
+[rosout][INFO] 2018-10-15 06:35:04,676: Lstep:  4630
+[rosout][INFO] 2018-10-15 06:35:04,679: Rstep:  4480
+[rosout][INFO] 2018-10-15 06:35:04,681: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,684: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,687: th:     -0.599964141846
+[rosout][INFO] 2018-10-15 06:35:04,689: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,692: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:04,774: dt:     0.0999958515167
+[rosout][INFO] 2018-10-15 06:35:04,776: Lstep:  4605
+[rosout][INFO] 2018-10-15 06:35:04,779: Rstep:  4505
+[rosout][INFO] 2018-10-15 06:35:04,782: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,784: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,786: th:     -0.399972438812
+[rosout][INFO] 2018-10-15 06:35:04,789: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,791: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:04,874: dt:     0.100003004074
+[rosout][INFO] 2018-10-15 06:35:04,876: Lstep:  4580
+[rosout][INFO] 2018-10-15 06:35:04,879: Rstep:  4530
+[rosout][INFO] 2018-10-15 06:35:04,881: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,884: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,887: th:     -0.199966430664
+[rosout][INFO] 2018-10-15 06:35:04,889: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,891: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:04,974: dt:     0.0999732017517
+[rosout][INFO] 2018-10-15 06:35:04,976: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:04,979: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:04,981: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:04,984: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:04,987: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:04,989: status: State.TURN4
+[rosout][INFO] 2018-10-15 06:35:04,992: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 2.0
+[rosout][INFO] 2018-10-15 06:35:05,074: dt:     0.100041866302
+[rosout][INFO] 2018-10-15 06:35:05,076: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,079: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,081: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,084: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,086: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,089: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,092: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,174: dt:     0.0999839305878
+[rosout][INFO] 2018-10-15 06:35:05,176: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,178: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,181: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,184: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,187: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,189: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,192: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,274: dt:     0.100005149841
+[rosout][INFO] 2018-10-15 06:35:05,276: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,279: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,281: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,284: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,286: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,289: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,291: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,374: dt:     0.100047826767
+[rosout][INFO] 2018-10-15 06:35:05,376: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,379: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,381: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,384: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,386: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,389: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,391: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,474: dt:     0.0999460220337
+[rosout][INFO] 2018-10-15 06:35:05,476: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,479: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,482: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,484: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,487: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,489: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,492: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,574: dt:     0.100028038025
+[rosout][INFO] 2018-10-15 06:35:05,576: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,579: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,581: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,584: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,587: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,589: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,592: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,674: dt:     0.0999670028687
+[rosout][INFO] 2018-10-15 06:35:05,676: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,679: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,681: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,684: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,686: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,689: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,691: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,774: dt:     0.100027084351
+[rosout][INFO] 2018-10-15 06:35:05,776: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,779: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,781: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,784: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,786: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,789: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,792: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,874: dt:     0.099977016449
+[rosout][INFO] 2018-10-15 06:35:05,876: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,879: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,882: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,885: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,887: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,890: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,893: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:05,974: dt:     0.100265026093
+[rosout][INFO] 2018-10-15 06:35:05,977: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,979: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:05,982: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:05,985: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:05,987: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:05,990: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:05,993: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,074: dt:     0.0999870300293
+[rosout][INFO] 2018-10-15 06:35:06,077: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,079: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,082: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,085: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,088: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,091: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,093: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,174: dt:     0.0998249053955
+[rosout][INFO] 2018-10-15 06:35:06,176: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,179: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,182: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,184: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,187: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,190: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,193: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,274: dt:     0.0999128818512
+[rosout][INFO] 2018-10-15 06:35:06,276: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,279: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,282: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,285: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,287: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,290: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,292: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,374: dt:     0.0999929904938
+[rosout][INFO] 2018-10-15 06:35:06,376: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,379: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,382: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,385: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,387: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,390: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,392: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,474: dt:     0.100279092789
+[rosout][INFO] 2018-10-15 06:35:06,477: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,479: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,482: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,485: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,487: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,490: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,493: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,574: dt:     0.0997359752655
+[rosout][INFO] 2018-10-15 06:35:06,576: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,579: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,582: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,584: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,586: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,589: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,592: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,674: dt:     0.100055932999
+[rosout][INFO] 2018-10-15 06:35:06,676: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,679: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,682: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,685: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,687: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,689: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,692: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,774: dt:     0.0999782085419
+[rosout][INFO] 2018-10-15 06:35:06,776: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,779: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,782: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,784: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,786: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,789: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,792: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rosout][INFO] 2018-10-15 06:35:06,874: dt:     0.0999939441681
+[rosout][INFO] 2018-10-15 06:35:06,876: Lstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,879: Rstep:  4555
+[rosout][INFO] 2018-10-15 06:35:06,882: x:      0.776863577254
+[rosout][INFO] 2018-10-15 06:35:06,885: y:      0.000205635840358
+[rosout][INFO] 2018-10-15 06:35:06,887: th:     -2.00271606445e-05
+[rosout][INFO] 2018-10-15 06:35:06,889: status: State.STOP
+[rosout][INFO] 2018-10-15 06:35:06,892: 
+linear: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+[rospy.core][INFO] 2018-10-15 06:35:06,956: signal_shutdown [signal-2]
+[rospy.internal][INFO] 2018-10-15 06:35:07,059: topic[/rosout] removing connection to /rosout
+[rospy.internal][INFO] 2018-10-15 06:35:07,061: topic[/cmd_vel] removing connection to /motors
+[rospy.internal][INFO] 2018-10-15 06:35:07,062: topic[/switchs] removing connection to http://ubuntu:46007/
+[rospy.internal][INFO] 2018-10-15 06:35:07,065: topic[/lightsensors] removing connection to http://ubuntu:39589/
+[rospy.impl.masterslave][INFO] 2018-10-15 06:35:07,066: signal-2
+[rospy.core][INFO] 2018-10-15 06:35:07,634: signal_shutdown [atexit]
