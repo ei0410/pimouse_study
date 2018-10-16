@@ -27,6 +27,7 @@ class StateMachine():
 
         self.cur_time = rospy.Time.now()
         self.last_time = self.cur_time
+        self.dt = 0.0
 
         self.x = 0.0
         self.y = 0.0
@@ -54,21 +55,19 @@ class StateMachine():
 
     def odom_update(self, vel, rot):
         self.cur_time = rospy.Time.now()
-        dt = self.cur_time.to_sec() - self.last_time.to_sec()
+        self.dt = self.cur_time.to_sec() - self.last_time.to_sec()
 
         self.vx = vel
         self.vth = rot
-        self.x += self.vx * math.cos(self.th) * dt
-        self.y += self.vx * math.sin(self.th) * dt
-        self.th += self.vth * dt
+        self.x += self.vx * math.cos(self.th) * self.dt
+        self.y += self.vx * math.sin(self.th) * self.dt
+        self.th += self.vth * self.dt
 
         self.forward_hz = 80000.0*vel/(9*math.pi)
         self.rot_hz = 400.0*rot/math.pi
 
-        self.Lstep += int(round((self.forward_hz - self.rot_hz) * dt))
-        self.Rstep += int(round((self.forward_hz + self.rot_hz) * dt))
-
-        rospy.loginfo("dt:     " + str(dt) + "Lstep:  " + str(self.Lstep) + "Rstep:  " + str(self.Rstep))
+        self.Lstep += int(round((self.forward_hz - self.rot_hz) * self.dt))
+        self.Rstep += int(round((self.forward_hz + self.rot_hz) * self.dt))
 
         self.last_time = self.cur_time
 
@@ -173,7 +172,7 @@ class SimpleDrive():
             statemachine.odom_update(vel_x, rot_z)
 
             self.cmd_vel.publish(self.data)
-            rospy.loginfo("x:      " + str(statemachine.x) + "y:      " + str(statemachine.y) + "th:     " + str(statemachine.th) + "status: " + str(statemachine.state) + "data:" + str(self.data))
+            rospy.loginfo("\n" + "dt: " + str(statemachine.dt) + "\n" + "Lstep: " + str(statemachine.Lstep) + "\n" + "Rstep: " + str(statemachine.Rstep) + "\n" + "x: " + str(statemachine.x) + "\n" + "y: " + str(statemachine.y) + "\n" + "th: " + str(statemachine.th) + "\n" + "status: " + str(statemachine.state) + "\n" + str(self.data))
             rate.sleep()
 
 if __name__ == '__main__':
