@@ -128,6 +128,8 @@ class SimpleDrive():
         rot_z = 2.0
 
         #rospy.loginfo(self.switch_values)
+        #rospy.loginfo("%dt," + "Lstep," + "Rstep," + "x," + "y," + "th," + "status," + "data")
+        #rospy.loginfo("%dt," + "Lstep," + "Rstep," + "x," + "y," + "th," + "status,")
 
         while not rospy.is_shutdown():
             statemachine.update_state()
@@ -172,7 +174,11 @@ class SimpleDrive():
             statemachine.odom_update(vel_x, rot_z)
 
             self.cmd_vel.publish(self.data)
+            """
             rospy.loginfo("\n" + "dt:     " + str(statemachine.dt) + "\n" + "Lstep:  " + str(statemachine.Lstep) + "\n" + "Rstep:  " + str(statemachine.Rstep) + "\n" + "x:      " + str(statemachine.x) + "\n" + "y:      " + str(statemachine.y) + "\n" + "th:     " + str(statemachine.th) + "\n" + "status: " + str(statemachine.state) + "\n" + str(self.data))
+            """
+
+            rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.Lstep) + "," + str(statemachine.Rstep) + "," + str(statemachine.x) + "," + str(statemachine.y) + "," + str(statemachine.th) + "," + str(statemachine.state))
             rate.sleep()
 
 if __name__ == '__main__':
