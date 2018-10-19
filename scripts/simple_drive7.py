@@ -10,28 +10,50 @@ from pimouse_ros.msg import LightSensorValues
 from pimouse_ros.msg import SwitchValues
 from enum import Enum
 
-class Linear(smach.State):
+class Stand(smach.State):
     def __init__(self):
-        smach.State.__init__(self, outcomes=['outcome1', 'outcome2'])
-        self.counter = 0
+        smach.State.__init__(self, outcomes=['to_up'])
 
     def execute(self, userdata):
-        rospy.loginfo('Executing state Linear')
+        rospy.loginfo('Executing state STAND')
         rospy.sleep(1)
-        if self.counter < 3:
-            self.counter += 1
-            return 'outcome1'
-        else:
-            return 'outcome2'
+        return 'to_up'
+
+class Up(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['to_left', 'to_right','to_stop'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state UP')
+        rospy.sleep(1)
+        return 'to_left'
+
+class Left(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['to_up'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state LEFT')
+        rospy.sleep(1)
+        return 'to_up'
+
+class Right(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['to_up'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state RIGHT')
+        rospy.sleep(1)
+        return 'to_up'
 
 class Stop(smach.State):
     def __init__(self):
-        smach.State.__init__(self, outcomes=['outcome2'])
+        smach.State.__init__(self, outcomes=['to_finish'])
 
     def execute(self, userdata):
-        rospy.loginfo('Executing state Stop')
+        rospy.loginfo('Executing state STOP')
         rospy.sleep(1)
-        return 'outcome2'
+        return 'to_finish'
 
 
 class StateMachine():
@@ -200,9 +222,6 @@ class SimpleDrive():
             statemachine.odom_update(vel_x, rot_z)
 
             self.cmd_vel.publish(self.data)
-            """
-            rospy.loginfo("\n" + "dt:     " + str(statemachine.dt) + "\n" + "Lstep:  " + str(statemachine.Lstep) + "\n" + "Rstep:  " + str(statemachine.Rstep) + "\n" + "x:      " + str(statemachine.x) + "\n" + "y:      " + str(statemachine.y) + "\n" + "th:     " + str(statemachine.th) + "\n" + "status: " + str(statemachine.state) + "\n" + str(self.data))
-            """
 
             rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.Lstep) + "," + str(statemachine.Rstep) + "," + str(statemachine.x) + "," + str(statemachine.y) + "," + str(statemachine.th) + "," + str(statemachine.state))
             rate.sleep()
@@ -214,11 +233,14 @@ if __name__ == '__main__':
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
     rospy.ServiceProxy('/motor_on', Trigger).call()
 
-    sm = smach.StateMachine(outcomes=['outcome4', 'outcome5'])
+    sm = smach.StateMachine(outcomes=['SUCCESS', 'FAIL'])
 
     with sm:
-        smach.StateMachine.add('UP', Up(), transitions={'outcome1':'STOP','outcome2':'outcome4'})
-        smach.StateMachine.add('STOP',   Stop(),   transitions={'outcome2':'UP'})
+        smach.StateMachine.add('STAND', Stand(), transitions={'to_up':'UP'})
+        smach.StateMachine.add('UP', Up(), transitions={'to_left':'LEFT','to_right':'RIGHT','to_stop':'STOP'})
+        smach.StateMachine.add('LEFT', Left(), transitions={'to_up':'UP'})
+        smach.StateMachine.add('RIGHT', Right(), transitions={'to_up':'UP'})
+        smach.StateMachine.add('STOP',   Stop(),   transitions={'to_finish':'SUCCESS'})
 
     sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
     sis.start()
