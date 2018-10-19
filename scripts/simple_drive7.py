@@ -2,11 +2,37 @@
 import rospy, copy
 import time
 import math
+import smach
+import smach_ros
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
 from pimouse_ros.msg import SwitchValues
 from enum import Enum
+
+class Linear(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['outcome1', 'outcome2'])
+        self.counter = 0
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state Linear')
+        rospy.sleep(1)
+        if self.counter < 3:
+            self.counter += 1
+            return 'outcome1'
+        else:
+            return 'outcome2'
+
+class Stop(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['outcome2'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state Stop')
+        rospy.sleep(1)
+        return 'outcome2'
+
 
 class StateMachine():
     class State(Enum):
@@ -27,6 +53,7 @@ class StateMachine():
 
         self.cur_time = rospy.Time.now()
         self.last_time = self.cur_time
+        self.dt = 0.0
 
         self.x = 0.0
         self.y = 0.0
@@ -54,23 +81,19 @@ class StateMachine():
 
     def odom_update(self, vel, rot):
         self.cur_time = rospy.Time.now()
-        dt = self.cur_time.to_sec() - self.last_time.to_sec()
+        self.dt = self.cur_time.to_sec() - self.last_time.to_sec()
 
         self.vx = vel
         self.vth = rot
-        self.x += self.vx * math.cos(self.th) * dt
-        self.y += self.vx * math.sin(self.th) * dt
-        self.th += self.vth * dt
+        self.x += self.vx * math.cos(self.th) * self.dt
+        self.y += self.vx * math.sin(self.th) * self.dt
+        self.th += self.vth * self.dt
 
         self.forward_hz = 80000.0*vel/(9*math.pi)
         self.rot_hz = 400.0*rot/math.pi
 
-        self.Lstep += int(round((self.forward_hz - self.rot_hz) * dt))
-        self.Rstep += int(round((self.forward_hz + self.rot_hz) * dt))
-
-        rospy.loginfo("dt:     " + str(dt))
-        rospy.loginfo("Lstep:  " + str(self.Lstep))
-        rospy.loginfo("Rstep:  " + str(self.Rstep))
+        self.Lstep += int(round((self.forward_hz - self.rot_hz) * self.dt))
+        self.Rstep += int(round((self.forward_hz + self.rot_hz) * self.dt))
 
         self.last_time = self.cur_time
 
@@ -131,6 +154,8 @@ class SimpleDrive():
         rot_z = 2.0
 
         #rospy.loginfo(self.switch_values)
+        #rospy.loginfo("%dt," + "Lstep," + "Rstep," + "x," + "y," + "th," + "status," + "data")
+        #rospy.loginfo("%dt," + "Lstep," + "Rstep," + "x," + "y," + "th," + "status,")
 
         while not rospy.is_shutdown():
             statemachine.update_state()
@@ -175,11 +200,11 @@ class SimpleDrive():
             statemachine.odom_update(vel_x, rot_z)
 
             self.cmd_vel.publish(self.data)
-            rospy.loginfo("x:      " + str(statemachine.x))
-            rospy.loginfo("y:      " + str(statemachine.y))
-            rospy.loginfo("th:     " + str(statemachine.th))
-            rospy.loginfo("status: " + str(statemachine.state))
-            rospy.loginfo("\n" + str(self.data))
+            """
+            rospy.loginfo("\n" + "dt:     " + str(statemachine.dt) + "\n" + "Lstep:  " + str(statemachine.Lstep) + "\n" + "Rstep:  " + str(statemachine.Rstep) + "\n" + "x:      " + str(statemachine.x) + "\n" + "y:      " + str(statemachine.y) + "\n" + "th:     " + str(statemachine.th) + "\n" + "status: " + str(statemachine.state) + "\n" + str(self.data))
+            """
+
+            rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.Lstep) + "," + str(statemachine.Rstep) + "," + str(statemachine.x) + "," + str(statemachine.y) + "," + str(statemachine.th) + "," + str(statemachine.state))
             rate.sleep()
 
 if __name__ == '__main__':
@@ -188,4 +213,16 @@ if __name__ == '__main__':
     rospy.wait_for_service('/motor_off')
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
     rospy.ServiceProxy('/motor_on', Trigger).call()
+
+    sm = smach.StateMachine(outcomes=['outcome4', 'outcome5'])
+
+    with sm:
+        smach.StateMachine.add('UP', Up(), transitions={'outcome1':'STOP','outcome2':'outcome4'})
+        smach.StateMachine.add('STOP',   Stop(),   transitions={'outcome2':'UP'})
+
+    sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
+    sis.start()
+
+    outcome = sm.execute()
+
     SimpleDrive().run()

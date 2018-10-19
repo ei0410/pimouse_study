@@ -4,37 +4,103 @@ import time
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
+from pimouse_ros.msg import SwitchValues
+from enum import Enum
+
+
+threshold = 500
+data = Twist()
 
 class SimpleDrive():
-    def __init__(self):
-        self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+    class State(Enum):
+        LINEAR1 = 0
+        TURN1   = 1
+        LINEAR2 = 2
+        TURN2   = 3
+        LINEAR3 = 4
+        TURN3   = 5
+        LINEAR4 = 6
+        TURN4   = 7
 
+    def __init__(self):
+        self.state = self.State.LINEAR1
+        self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
         self.sensor_values = LightSensorValues()
+        self.switch_values = SwitchValues()
         rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
+        rospy.Subscriber('/switchs', SwitchValues, self.callback2)
 
     def callback(self,messages):
         self.sensor_values = messages
 
-    def run(self):
-        """
-        rate = rospy.Rate(10)
-        data = Twist()
+    def callback2(self,messages):
+        self.switch_values = messages
 
-        while not rospy.is_shutdown():
-            data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
-            self.cmd_vel.publish(data)
-            rate.sleep()
-        """
+    def up(self, vel):
+        data.angular.z = 0.0
+        data.linear.x = vel if self.sensor_values.sum_all < threshold else 0.0
+
+    def down(self, vel):
+        data.angular.z = 0.0
+        data.linear.x = -vel if self.sensor_values.sum_all < threshold else 0.0
+
+    def left(self, rot):
+        data.linear.x = 0.0
+        data.angular.z= rot if self.sensor_values.sum_all < threshold else 0.0
+
+    def right(self, rot):
+        data.linear.x = 0.0
+        data.angular.z= -rot if self.sensor_values.sum_all < threshold else 0.0
+
+    def stop(self):
+        data.linear.x = 0.0
+        data.linear.y = 0.0
+        data.linear.z = 0.0
+        data.angular.x = 0.0
+        data.angular.y = 0.0
+        data.angular.z = 0.0
+
+    def run(self):
         rate = rospy.Rate(10)
-        data = Twist()
         start = time.time()
 
+        vel_x = 0.2
+        #rot_z = 2.0
+        rot_z = 1.5
+
+        linear_time1 = 3.0
+        turn_time1 = linear_time1 + 1.5
+        #linear_time2 = turn_time1 + 3.0
+        linear_time2 = turn_time1 + 5.0
+        turn_time2 = linear_time2 + 1.5
+        linear_time3 = turn_time2 + 3.0
+        turn_time3 = linear_time3 + 1.5
+        #linear_time4 = turn_time3 + 3.0
+        linear_time4 = turn_time3 + 5.0
+        turn_time4 = linear_time4 + 1.5
+
         while not rospy.is_shutdown():
-            data.linear.x = 0.1 if self.sensor_values.sum_all < 500 else 0.0
             elapsed_time = time.time() - start
-            if elapsed_time > 3.0 :
-                data.linear.x = 0.0
+
+            if elapsed_time < linear_time1:
+                self.up(vel_x)
+            elif elapsed_time < turn_time1:
+                self.left(rot_z)
+            elif elapsed_time < linear_time2:
+                self.up(vel_x)
+            elif elapsed_time < turn_time2:
+                self.right(rot_z)
+            elif elapsed_time < linear_time3:
+                self.up(vel_x)
+            elif elapsed_time < turn_time3:
+                self.right(rot_z)
+            elif elapsed_time < linear_time4:
+                self.up(vel_x)
+            else :
+                self.stop()
+
             self.cmd_vel.publish(data)
+            rospy.loginfo(data)
             rate.sleep()
 
 if __name__ == '__main__':
