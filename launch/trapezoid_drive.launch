@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find pimouse_ros)/launch/pimouse.launch" />
+    <node pkg="pimouse_study" name="trapezoid_drive" type="trapezoid_drive.py" required="true" output="screen" />
+    <test test-name="test_simple_drive" pkg="pimouse_study" type="travis_test_simple_drive.py" />
+</launch>

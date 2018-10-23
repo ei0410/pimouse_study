@@ -1,5 +1,0 @@
-<launch>
-    <include file="$(find pimouse_ros)/launch/pimouse.launch" />
-    <node pkg="pimouse_run_corridor" name="trapezoid" type="trapezoid.py" required="true" output="screen" />
-    <test test-name="test_wall_stop_accel" pkg="pimouse_run_corridor" type="travis_test_wall_stop_accel.py" />
-</launch>

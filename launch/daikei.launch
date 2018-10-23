@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find pimouse_ros)/launch/pimouse.launch" />
+    <node pkg="pimouse_study" name="daikei" type="daikei.py" required="true" output="screen" />
+</launch>
