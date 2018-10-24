@@ -1,9 +1,11 @@
 #!/usr/bin/env python
+
 import rospy, copy
 import time
 import math
 import smach
 import smach_ros
+
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
@@ -21,17 +23,19 @@ stop_time    = turn_time4   + 2.0
 
 time_start = time.time()
 
-elapsed_time = 0.0
-
 class Stand(smach.State):
     def __init__(self):
-        global elapsed_time
-        smach.State.__init__(self, outcomes=['to_up'])
+        smach.State.__init__(self, outcomes=['to_up', 'to_stand'])
+        self.elapsed_time = 0
 
     def execute(self, userdata):
         rospy.loginfo('Executing state STAND')
-        if elapsed_time < standby_time:
+        self.elasped_time = time.time() - time_start
+
+        if standby_time < self.elapsed_time:
             return 'to_up'
+        else:
+            return 'to_stand'
 
 class Up(smach.State):
     def __init__(self):
@@ -40,10 +44,13 @@ class Up(smach.State):
 
     def execute(self, userdata):
         rospy.loginfo('Executing state UP')
-        #if (linear_time1 < elapsed_time) and (elapsed_time < turn_time1):
-        #    return 'to_left'
-        if elasped_time < turn_time1:
+
+        elapsed_time = time.time() - time_start
+
+        if elapsed_time < turn_time1:
             return 'to_left'
+        else:
+            pass
 
 class Left(smach.State):
     def __init__(self):
@@ -67,6 +74,7 @@ class Stop(smach.State):
 
     def execute(self, userdata):
         rospy.loginfo('Executing state STOP')
+        time.sleep(3)
         return 'to_finish'
 
 class State():
@@ -172,7 +180,7 @@ if __name__ == '__main__':
     sm = smach.StateMachine(outcomes=['SUCCESS', 'FAIL'])
 
     with sm:
-        smach.StateMachine.add('STAND', Stand(), transitions={'to_up':'UP'})
+        smach.StateMachine.add('STAND', Stand(), transitions={'to_up':'UP','to_stand':'STAND'})
         smach.StateMachine.add('UP', Up(), transitions={'to_left':'LEFT','to_right':'RIGHT','to_stop':'STOP'})
         smach.StateMachine.add('LEFT', Left(), transitions={'to_up':'UP'})
         smach.StateMachine.add('RIGHT', Right(), transitions={'to_up':'UP'})
