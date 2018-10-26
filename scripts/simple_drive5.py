@@ -1,7 +1,9 @@
 #!/usr/bin/env python
+
 import rospy, copy
 import time
 import math
+
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
@@ -171,7 +173,7 @@ class SimpleDrive():
 
             self.cmd_vel.publish(self.data)
 
-            rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.Lstep) + "," + str(statemachine.Rstep) + "," + str(statemachine.x) + "," + str(statemachine.y) + "," + str(statemachine.th) + "," + str(statemachine.state) + "," + str(self.data.linear.x) + "," + str(self.data.angular.z))
+            rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.Lstep) + "," + str(statemachine.Rstep) + "," + str(statemachine.x) + "," + str(statemachine.y) + "," + str(statemachine.th) + "," + str(statemachine.forward_hz) + "," + str(statemachine.state) + "," + str(self.data.linear.x) + "," + str(self.data.angular.z))
             rate.sleep()
 
 if __name__ == '__main__':

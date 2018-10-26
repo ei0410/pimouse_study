@@ -18,13 +18,13 @@ class Trapezoid():
         rate = rospy.Rate(10)
         data = Twist()
 
-        v_min = 0.2
-        v_max = 1.98
+        v_min = 0.0
+        v_max = 0.1
 
         # If v_max is about 1.6 m/s, step motor will stop
         # v_max limit is 1.98 m/s
 
-        accel = 0.02
+        accel = 0.01
 
         data.linear.x = 0.0
 
