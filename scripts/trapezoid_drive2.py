@@ -77,14 +77,13 @@ class SimpleDrive():
         self.data.linear.x = vel if self.sensor_values.sum_all < self.threshold else 0.0
 
     def run(self):
-        rate = rospy.Rate(10)
+        rate = rospy.Rate(100)
         statemachine = StateMachine()
 
         v_x = 0.0
+        v_accel = 0.001
 
-        v_accel = 0.01
-
-        vel_x = 0.1
+        vel_x = 0.0 # define only
 
         while not rospy.is_shutdown():
             statemachine.update_state()
@@ -111,7 +110,8 @@ class SimpleDrive():
             statemachine.odom_update(v_x)
             self.cmd_vel.publish(self.data)
 
-            rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.x) + "," + str(statemachine.state) + "," + str(self.data.linear.x))
+            #rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.x) + "," + str(statemachine.state) + "," + str(self.data.linear.x))
+            rospy.loginfo('{:.3f}'.format(statemachine.dt) + "," + '{:.3f}'.format(statemachine.x) + "," + '{:.3f}'.format(self.data.linear.x) + "," + str(statemachine.state))
             rate.sleep()
 
 if __name__ == '__main__':
