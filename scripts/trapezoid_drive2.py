@@ -31,7 +31,7 @@ class StateMachine():
         self.forward_hz = 0
 
         self.standby_time = 1.0
-        self.linear_time1 = self.standby_time + 2.0
+        self.linear_time1 = self.standby_time + 10.0
         #self.linear_time1 = self.standby_time + 4.0
         #self.linear_time1 = self.standby_time + 2.0
         #self.linear_time1 = self.standby_time + 5.0
@@ -77,11 +77,11 @@ class SimpleDrive():
         self.data.linear.x = vel if self.sensor_values.sum_all < self.threshold else 0.0
 
     def run(self):
-        rate = rospy.Rate(100)
+        rate = rospy.Rate(10)
         statemachine = StateMachine()
 
         v_x = 0.0
-        v_accel = 0.001
+        v_accel = 0.02
 
         vel_x = 0.0 # define only
 
@@ -92,7 +92,7 @@ class SimpleDrive():
                 vel_x = 0.0
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.LINEAR1:
-                vel_x = 0.1
+                vel_x = 0.2
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.STOP:
                 vel_x = 0.0
