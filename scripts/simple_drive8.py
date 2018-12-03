@@ -3,33 +3,82 @@
 import rospy, copy
 import time
 import math
+import smach
+import smach_ros
 
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.msg import LightSensorValues
-from pimouse_ros.msg import SwitchValues
-from enum import Enum
 
-class StateMachine():
-    class State(Enum):
-        INIT    = 0
-        LINEAR1 = 1
-        TURN1   = 2
-        LINEAR2 = 3
-        TURN2   = 4
-        LINEAR3 = 5
-        TURN3   = 6
-        LINEAR4 = 7
-        TURN4   = 8
-        LINEAR5 = 9
-        STOP    = 10
+standby_time = 1.0
+linear_time1 = standby_time + 2.0
+turn_time1   = linear_time1 + 0.785
+linear_time2 = turn_time1   + 2.0
+turn_time2   = linear_time2 + 0.785
+linear_time3 = turn_time2   + 2.0
+turn_time3   = linear_time3 + 0.785
+linear_time4 = turn_time3   + 2.0
+turn_time4   = linear_time4 + 0.785
+stop_time    = turn_time4   + 2.0
 
+time_start = time.time()
+
+class Stand(smach.State):
     def __init__(self):
-        self.state = self.State.INIT
-        self.time_start = time.time()
+        smach.State.__init__(self, outcomes=['to_up', 'to_stand'])
+        self.elapsed_time = 0
 
-        self.cur_time = rospy.Time.now()
-        self.last_time = self.cur_time
+    def execute(self, userdata):
+        rospy.loginfo('Executing state STAND')
+        self.elasped_time = time.time() - time_start
+
+        if standby_time < self.elapsed_time:
+            return 'to_up'
+        else:
+            return 'to_stand'
+
+class Up(smach.State):
+    def __init__(self):
+        global elapsed_time
+        smach.State.__init__(self, outcomes=['to_left', 'to_right','to_stop'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state UP')
+
+        elapsed_time = time.time() - time_start
+
+        if elapsed_time < turn_time1:
+            return 'to_left'
+        else:
+            pass
+
+class Left(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['to_up'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state LEFT')
+        return 'to_up'
+
+class Right(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['to_up'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state RIGHT')
+        return 'to_up'
+
+class Stop(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['to_finish'])
+
+    def execute(self, userdata):
+        rospy.loginfo('Executing state STOP')
+        time.sleep(3)
+        return 'to_finish'
+
+class State():
+    def __init__(self):
         self.dt = 0.0
 
         self.x = 0.0
@@ -44,18 +93,6 @@ class StateMachine():
 
         self.Rstep = 0
         self.Lstep = 0
-
-        self.standby_time = 1.0
-        self.linear_time1 = self.standby_time + 2.0
-        self.turn_time1   = self.linear_time1 + 2.2
-        self.linear_time2 = self.turn_time1   + 2.0
-        self.turn_time2   = self.linear_time2 + 2.2
-        self.linear_time3 = self.turn_time2   + 2.0
-        self.turn_time3   = self.linear_time3 + 2.2
-        self.linear_time4 = self.turn_time3   + 2.0
-        self.turn_time4   = self.linear_time4 + 2.2
-        self.linear_time5 = self.turn_time4   + 2.0
-        self.stop_time    = self.linear_time5 + 1.0
 
     def odom_update(self, vel, rot):
         self.cur_time = rospy.Time.now()
@@ -97,8 +134,6 @@ class StateMachine():
             self.state = self.State.LINEAR4
         elif elapsed_time < self.turn_time4:
             self.state = self.State.TURN4
-        elif elapsed_time < self.linear_time5:
-            self.state = self.State.LINEAR5
         elif elapsed_time < self.stop_time:
             self.state = self.State.STOP
         else:
@@ -110,15 +145,10 @@ class SimpleDrive():
         self.threshold = 500
         self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
         self.sensor_values = LightSensorValues()
-        self.switch_values = SwitchValues()
         rospy.Subscriber('/lightsensors', LightSensorValues, self.LightSensors)
-        rospy.Subscriber('/switchs', SwitchValues, self.Switchs)
 
     def LightSensors(self,messages):
         self.sensor_values = messages
-
-    def Switchs(self,messages):
-        self.switch_values = messages
 
     def linear(self, vel):
         self.data.linear.x = vel if self.sensor_values.sum_all < self.threshold else 0.0
@@ -128,59 +158,16 @@ class SimpleDrive():
 
     def run(self):
         rate = rospy.Rate(10)
-        statemachine = StateMachine()
 
         vel_x = 0.2
-        rot_z = 1.0
+        rot_z = 2.0
 
         while not rospy.is_shutdown():
-            statemachine.update_state()
-
-            if statemachine.state == statemachine.State.INIT:
-                vel_x = 0.0
-                rot_z = 0.0
-            elif statemachine.state == statemachine.State.LINEAR1:
-                vel_x = 0.2
-                rot_z = 0.0
-            elif statemachine.state == statemachine.State.TURN1:
-                vel_x = 0.0
-                rot_z = 1.0
-            elif statemachine.state == statemachine.State.LINEAR2:
-                vel_x = 0.2
-                rot_z = 0.0
-            elif statemachine.state == statemachine.State.TURN2:
-                vel_x = 0.0
-                rot_z = -1.0
-            elif statemachine.state == statemachine.State.LINEAR3:
-                vel_x = 0.2
-                rot_z = 0.0
-            elif statemachine.state == statemachine.State.TURN3:
-                vel_x = 0.0
-                rot_z = -1.0
-            elif statemachine.state == statemachine.State.LINEAR4:
-                vel_x = 0.2
-                rot_z = 0.0
-            elif statemachine.state == statemachine.State.TURN4:
-                vel_x = 0.0
-                rot_z = 1.0
-            elif statemachine.state == statemachine.State.LINEAR5:
-                vel_x = 0.2
-                rot_z = 0.0
-            elif statemachine.state == statemachine.State.STOP:
-                vel_x = 0.0
-                rot_z = 0.0
-            else :
-                vel_x = 0.0
-                rot_z = 0.0
-
             self.linear(vel_x)
             self.turn(rot_z)
-
-            statemachine.odom_update(vel_x, rot_z)
-
             self.cmd_vel.publish(self.data)
-
-            rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.Lstep) + "," + str(statemachine.Rstep) + "," + str(statemachine.x) + "," + str(statemachine.y) + "," + str(statemachine.th) + "," + str(statemachine.forward_hz) + "," + str(statemachine.state) + "," + str(self.data.linear.x) + "," + str(self.data.angular.z))
+            rospy.loginfo(str(statemachine.dt) + "," + str(statemachine.Lstep) + "," + str(statemachine.Rstep) + "," + str(statemachine.x) + "," + str(statemachine.y) + "," + str(statemachine.th) + "," + str(statemachine.state))
+            last_time = cur_time
             rate.sleep()
 
 if __name__ == '__main__':
@@ -189,4 +176,18 @@ if __name__ == '__main__':
     rospy.wait_for_service('/motor_off')
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
     rospy.ServiceProxy('/motor_on', Trigger).call()
+
+    sm = smach.StateMachine(outcomes=['SUCCESS', 'FAIL'])
+
+    with sm:
+        smach.StateMachine.add('STAND', Stand(), transitions={'to_up':'UP','to_stand':'STAND'})
+        smach.StateMachine.add('UP', Up(), transitions={'to_left':'LEFT','to_right':'RIGHT','to_stop':'STOP'})
+        smach.StateMachine.add('LEFT', Left(), transitions={'to_up':'UP'})
+        smach.StateMachine.add('RIGHT', Right(), transitions={'to_up':'UP'})
+        smach.StateMachine.add('STOP',   Stop(),   transitions={'to_finish':'SUCCESS'})
+
+    sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
+    sis.start()
+
+    outcome = sm.execute()
     SimpleDrive().run()
