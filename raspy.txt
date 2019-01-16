@@ -1,0 +1,221 @@
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
+sudo apt-get install rpi-update
+sudo rpi-update
+sudo reboot
+
+sudo passwd root
+su
+sudo adduser ei
+groups pi
+sudo usermod -G pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input,spi,gpio ei
+groups ei
+ssh pi@192.168.11.x
+sudo cp -r /home/pi/* /home/ei
+sudo nano /etc/lightdm/lightdm.conf
+#autologin-user=pi
+sudo vim /etc/systemd/system/autologin@.service
+ExecStart=-/sbin/agetty --autologin ei --noclear %I $TERM
+who
+sudo passwd ei
+su ei
+
+userdel -r pi
+id -a pi
+
+#raspi-config
+sudo raspi-config
+Network Options
+Hostname
+
+Interfaces Options
+Camera
+SSH
+VNC
+SPI
+I2C
+Serial
+1-Wire
+Remote GPIO
+
+Advanced Options
+Expand Filesystem
+
+Localisation Options
+Change Locale
+ja_JP.UTF-8 UTF-8
+ja_JP.UTF-8
+
+Change Timezone
+Asia Tokyo
+Change Wi-fi Conuntry
+JP Japan
+
+#vim
+sudo apt-get install vim
+git clone https://github.com/ei0410/vimrc.git
+
+#fix ip(dhcpcd.conf)
+sudo vim /etc/dhcpcd.conf
+interface eth0
+static ip_address=192.168.11.x/24
+static routers=192.168.11.1
+static domain_name_servers=8.8.8.8
+interface wlan0
+static ip_address=192.168.11.y/24
+static routers=192.168.11.1
+static domain_name_servers=8.8.8.8
+
+#samba
+sudo apt-get install usbmount
+sudo vim /etc/usbmount/usbmount.conf
+FS_MOUNTPOINT ="-fstype = vfat, uid = pi, gid = pi, iocharset = utf8, codepage = 932"
+df -h
+
+sudo apt-get install samba -y
+sudo apt-get install ntfs-3g
+sudo fdisk -l
+sudo mkdir /mnt/usbhdd
+sudo mount -t ntfs-3g /dev/sda1 /mnt/usbhdd
+df -k
+
+sudo vim /etc/samba/smb.conf
+[global]
+dos charset = CP932
+unix charset = UTF-8
+
+[pub]
+path=/home/share
+public=yes
+read only = no
+guest ok=yes
+guest only=yes
+
+[USBNAS]
+path=/media/ei/MYLINUXLIVE
+public = Yes
+read only = No
+writable = Yes
+guest ok = Yes
+force user = pi
+
+sudo systemctl enable smbd
+sudo systemctl enable nmbd
+sudo /etc/init.d/samba restart
+
+\\192.168.11.x\pub
+
+#wiringPi
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build
+sudo apt install sleepenh
+gpio readall
+
+#bluetooth
+sudo apt install bluez bluez-hcidump libbluetooth-dev libusb-dev joystick libjack-jackd2-dev
+sudo systemctl enable bluetooth.service
+sudo reboot
+wget "https://help.ubuntu.com/community/Sixaxis?action=AttachFile&do=get&target=sixpair.c" -O sixpair.c
+gcc -o sixpair sixpair.c -lusb
+sudo apt install python-qt4 pyqt4-dev-tools qt4-designer
+sudo apt install libjack-jackd2-dev
+sudo apt install libbluetooth-dev
+git clone https://github.com/falkTX/qtsixa.git
+cd qtsixa
+make
+sudo make install
+echo $? 
+
+lsusb
+sudo ./sixpair
+#sudo ./sixpair xx:xx:xx:xx:xx:xx
+PSbutton
+sudo sixad -start &
+#/usr/bin/sixad --stop
+sudo systemctl enable sixad
+bluetoothctl
+sudo cat /dev/input/js0
+
+#docker
+cat /etc/os-release
+sudo apt-get update
+sudo apt-get install --yes \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+echo "deb [arch=armhf] https://download.docker.com/linux/debian \
+     $(lsb_release -cs) stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get update
+sudo apt-get install --yes docker-ce
+sudo docker version
+
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+sudo service docker restart
+exit
+sudo reboot
+
+docker run hello-world
+
+#docker-compose
+git clone https://github.com/docker/compose.git
+cd compose
+sudo docker build -t docker-compose:armhf -f Dockerfile.armhf .
+sudo docker run --rm --entrypoint="script/build/linux-entrypoint" -v $(pwd)/dist:/code/dist -v $(pwd)/.git:/code/.git "docker-compose:armhf"
+sudo docker run --rm --entrypoint="script/build/linux-entrypoint" -v (pwd)/dist:/code/dist -v (pwd)/.git:/code/.git "docker-compose:armhf"
+
+sudo cp dist/docker-compose-Linux-armv7l /usr/local/bin/docker-compose
+docker-compose --version
+docker-compose version 1.20.0dev, build 4ceeaad
+
+#ROS
+sudo apt-get install dirmngr
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential cmake
+sudo rosdep init
+rosdep update
+
+mkdir -p ~/catkin_ws
+cd ~/ros_catkin_ws
+
+rosinstall_generator ros_comm --rosdistro kinetic --deps --wet-only --tar > kinetic-ros_comm-wet.rosinstall
+wstool init src kinetic-ros_comm-wet.rosinstall
+wstool update -j4 -t src
+
+mkdir -p ~/catkin_ws/external_src
+cd ~/catkin_ws/external_src
+wget http://sourceforge.net/projects/assimp/files/assimp-3.1/assimp-3.1.1_no_test_models.zip/download -O assimp-3.1.1_no_test_models.zip
+unzip assimp-3.1.1_no_test_models.zip
+cd assimp-3.1.1
+cmake .
+make
+sudo make install
+
+#rosinstall_generator desktop --rosdistro kinetic --deps --wet-only --exclude collada_parser collada_urdf --tar > kinetic-desktop-wet.rosinstall
+
+cd ~/catkin_ws
+rosdep install -y --from-paths src --ignore-src --rosdistro kinetic -r --os=debian:stretch
+
+#sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
+sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic -j1
+
+source /opt/ros/kinetic/setup.bash
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+
+cd ~/catkin_ws
+rosinstall_generator ros_comm ros_control joystick_drivers --rosdistro kinetic --deps --wet-only --tar > kinetic-custom_ros.rosinstall
+wstool merge -t src kinetic-custom_ros.rosinstall
+wstool update -t src
+
+#rosdep install --from-paths src --ignore-src --rosdistro kinetic -y -r --os=debian:stretch
+sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
