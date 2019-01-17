@@ -5,29 +5,22 @@ sudo apt-get install rpi-update
 sudo rpi-update
 sudo reboot
 
-sudo passwd root
-su
-sudo adduser ei
-groups pi
-sudo usermod -G pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input,spi,gpio ei
-groups ei
-ssh pi@192.168.11.x
-sudo cp -r /home/pi/* /home/ei
-sudo nano /etc/lightdm/lightdm.conf
-#autologin-user=pi
-sudo vim /etc/systemd/system/autologin@.service
-ExecStart=-/sbin/agetty --autologin ei --noclear %I $TERM
-who
-sudo passwd ei
-su ei
-
-userdel -r pi
-id -a pi
-
 #raspi-config
 sudo raspi-config
 Network Options
 Hostname
+
+Boot Options
+Splash Screen
+
+Localisation Options
+Change Locale
+ja_JP.UTF-8 UTF-8
+ja_JP.UTF-8
+Change Timezone
+Asia Tokyo
+Change Wi-fi Conuntry
+JP Japan
 
 Interfaces Options
 Camera
@@ -41,16 +34,9 @@ Remote GPIO
 
 Advanced Options
 Expand Filesystem
-
-Localisation Options
-Change Locale
-ja_JP.UTF-8 UTF-8
-ja_JP.UTF-8
-
-Change Timezone
-Asia Tokyo
-Change Wi-fi Conuntry
-JP Japan
+Over Screen
+Pixel Doubling
+GL Driver
 
 #vim
 sudo apt-get install vim
@@ -66,6 +52,26 @@ interface wlan0
 static ip_address=192.168.11.y/24
 static routers=192.168.11.1
 static domain_name_servers=8.8.8.8
+
+#delete pi and add user
+sudo passwd root
+su
+sudo adduser ei
+groups pi
+sudo usermod -G pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input,spi,gpio ei
+groups ei
+ssh pi@192.168.11.x
+sudo cp -r /home/pi/* /home/ei
+sudo  /etc/lightdm/lightdm.conf
+#autologin-user=pi
+sudo vim /etc/systemd/system/autologin@.service
+ExecStart=-/sbin/agetty --autologin ei --noclear %I $TERM
+who
+sudo passwd ei
+su ei
+
+userdel -r pi
+id -a pi
 
 #samba
 sudo apt-get install usbmount
@@ -120,8 +126,6 @@ sudo reboot
 wget "https://help.ubuntu.com/community/Sixaxis?action=AttachFile&do=get&target=sixpair.c" -O sixpair.c
 gcc -o sixpair sixpair.c -lusb
 sudo apt install python-qt4 pyqt4-dev-tools qt4-designer
-sudo apt install libjack-jackd2-dev
-sudo apt install libbluetooth-dev
 git clone https://github.com/falkTX/qtsixa.git
 cd qtsixa
 make
@@ -131,7 +135,7 @@ echo $?
 lsusb
 sudo ./sixpair
 #sudo ./sixpair xx:xx:xx:xx:xx:xx
-PSbutton
+#PSbutton
 sudo sixad -start &
 #/usr/bin/sixad --stop
 sudo systemctl enable sixad
@@ -189,8 +193,9 @@ mkdir -p ~/catkin_ws
 cd ~/ros_catkin_ws
 
 rosinstall_generator ros_comm --rosdistro kinetic --deps --wet-only --tar > kinetic-ros_comm-wet.rosinstall
+#rosinstall_generator desktop --rosdistro kinetic --deps --wet-only --exclude collada_parser collada_urdf --tar > kinetic-desktop-wet.rosinstall
 wstool init src kinetic-ros_comm-wet.rosinstall
-wstool update -j4 -t src
+#wstool update -j4 -t src
 
 mkdir -p ~/catkin_ws/external_src
 cd ~/catkin_ws/external_src
@@ -201,13 +206,11 @@ cmake .
 make
 sudo make install
 
-#rosinstall_generator desktop --rosdistro kinetic --deps --wet-only --exclude collada_parser collada_urdf --tar > kinetic-desktop-wet.rosinstall
-
 cd ~/catkin_ws
 rosdep install -y --from-paths src --ignore-src --rosdistro kinetic -r --os=debian:stretch
 
-#sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
-sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic -j1
+sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
+#sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic -j1
 
 source /opt/ros/kinetic/setup.bash
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
@@ -217,5 +220,4 @@ rosinstall_generator ros_comm ros_control joystick_drivers --rosdistro kinetic -
 wstool merge -t src kinetic-custom_ros.rosinstall
 wstool update -t src
 
-#rosdep install --from-paths src --ignore-src --rosdistro kinetic -y -r --os=debian:stretch
 sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
