@@ -91,6 +91,8 @@ sudo vim /etc/samba/smb.conf
 dos charset = CP932
 unix charset = UTF-8
 
+guest account = ei
+
 [pub]
 path=/home/share
 public=yes
@@ -102,9 +104,11 @@ guest only=yes
 path=/media/ei/MYLINUXLIVE
 public = Yes
 read only = No
+browsable = Yes
 writable = Yes
 guest ok = Yes
-force user = pi
+create mask = 0777
+directory mask = 0777
 
 sudo systemctl enable smbd
 sudo systemctl enable nmbd
