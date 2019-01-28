@@ -52,9 +52,9 @@ class StateMachine():
         self.turn_time2   = self.linear_time2 + 2.2
         self.linear_time3 = self.turn_time2   + 2.0
         self.turn_time3   = self.linear_time3 + 2.2
-        self.linear_time4 = self.turn_time3   + 2.0
+        self.linear_time4 = self.turn_time3   + 1.0
         self.turn_time4   = self.linear_time4 + 2.2
-        self.linear_time5 = self.turn_time4   + 2.0
+        self.linear_time5 = self.turn_time4   + 1.0
         self.stop_time    = self.linear_time5 + 1.0
 
     def odom_update(self, vel, rot):
@@ -150,13 +150,13 @@ class SimpleDrive():
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN2:
                 vel_x = 0.0
-                rot_z = -1.0
+                rot_z = 1.0
             elif statemachine.state == statemachine.State.LINEAR3:
                 vel_x = 0.2
                 rot_z = 0.0
             elif statemachine.state == statemachine.State.TURN3:
                 vel_x = 0.0
-                rot_z = -1.0
+                rot_z = 1.0
             elif statemachine.state == statemachine.State.LINEAR4:
                 vel_x = 0.2
                 rot_z = 0.0
