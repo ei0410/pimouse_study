@@ -73,6 +73,15 @@ su ei
 userdel -r pi
 id -a pi
 
+#tightVNC
+sudo apt update
+sudo apt install -y tightvncserver
+sudo apt install -y xrdp
+sudo reboot
+
+windows10 remotedesktop
+Xong
+
 #samba
 sudo apt-get install usbmount
 sudo vim /etc/usbmount/usbmount.conf
@@ -122,6 +131,26 @@ cd wiringPi
 ./build
 sudo apt install sleepenh
 gpio readall
+
+#webiopi
+wget https://sourceforge.net/projects/webiopi/files/WebIOPi-0.7.1.tar.gz
+tar xvzf WebIOPi-0.7.1.tar.gz
+cd WebIOPi-0.7.1
+wget https://raw.githubusercontent.com/doublebind/raspi/master/webiopi-pi2bplus.patch
+patch -p1 -i webiopi-pi2bplus.patch
+sudo ./setup.sh
+no
+cd /etc/systemd/system/
+sudo wget https://raw.githubusercontent.com/doublebind/raspi/master/webiopi.service
+sudo systemctl start webiopi
+sudo systemctl enable webiopi
+sudo reboot
+
+http://IPアドレス:8000
+
+login
+user: webiopi
+pass: raspberry
 
 #bluetooth
 sudo apt install bluez bluez-hcidump libbluetooth-dev libusb-dev joystick libjack-jackd2-dev
