@@ -125,6 +125,37 @@ sudo /etc/init.d/samba restart
 
 \\192.168.11.x\pub
 
+#miniDLNA
+
+sudo apt update
+sudo apt install -y miniDLNA
+sudo vim /etc/minidlna.conf
+
+media_dir=V,/media/pi/MYLINUXLIVE/videos
+media_dir=A,/media/pi/MYLINUXLIVE/audio
+
+db_dir=/media/pi/MYLINUXLIVE/cache/minidlna
+
+mkdir -p /media/pi/MYLINUXLIVE/videos
+mkdir -p /media/pi/MYLINUXLIVE/audio
+mkdir -p /media/pi/MYLINUXLIVE/cache/minidlna
+chown minidlna /media/pi/MYLINUXLIVE/cache/minidlna
+
+sudo vim /etc/init.d/minidlna
+
+do_start()
+{
+    ...
+    mkdir -p $PIDDIR && chown $USER:$GROUP $PIDDIR || return 2
+    #add sleep 60
+    sleep60
+    
+    ...
+}
+
+sudo systemctl start minidlna.service
+sudo systemctl enable minidlna.service
+
 #wiringPi
 git clone git://git.drogon.net/wiringPi
 cd wiringPi
