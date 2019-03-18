@@ -73,6 +73,17 @@ su ei
 userdel -r pi
 id -a pi
 
+#picamera
+sudo apt-get install libav-tools git python3-picamera python3-ws4py
+git clone https://github.com/waveform80/pistreaming.git
+cd pistreaming
+python3 server.py
+
+http://IP:8082
+
+#vpn
+#ssh
+
 #tightVNC
 sudo apt update
 sudo apt install -y tightvncserver
