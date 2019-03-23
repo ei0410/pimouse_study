@@ -82,7 +82,60 @@ python3 server.py
 http://IP:8082
 
 #vpn
-#ssh
+sudo vim /etc/dhcpcd.conf
+
+interface br0
+static ip_address=192.168.x.y
+static routers=192.168.x.1
+static domain_name_servers=192.168.x.1
+
+sudo vim /etc/network/interfaces
+
+iface eth0 inet manual
+
+auto br0
+iface br0 inet manual
+bridge_ports eth0
+bridge_maxwait 10
+
+sudo apt install bridge-utils -y
+
+softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-arm_eabi-32bit.tar.gz
+
+cd Download
+tar xvzf softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-arm_eabi-32bit.tar.gz
+cd vpnserver
+make
+cd ..
+sudo mv -r vpnserver /usr/local/
+cd /usr/local/vpnserver
+sudo chmod 600 *
+sudo chmod 700 vpncmd
+sudo chmod 700 vpnserver
+
+sudo touch /etc/systemd/system/vpnserver.service
+sudo vim /etc/systemd/system/vpnserver.service
+
+[Unit]
+Description=SoftEther VPN Server
+After=network.target network-online.target
+
+[Service]
+User=root
+ExecStart=/usr/local/vpnserver/vpnserver start
+ExecStop=/usr/local/vpnserver/vpnserver stop
+Type=forking
+RestartSec=3s
+WorkingDirectory=/usr/local/vpnserver/
+ExecStartPre=/sbin/ip link set dev enxb827eb5f29f6 promisc on
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl start vpnserver
+sudo systemctl enable vpnserver
+sudo systemctl status vpnserver
 
 #tightVNC
 sudo apt update
