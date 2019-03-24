@@ -127,7 +127,7 @@ ExecStop=/usr/local/vpnserver/vpnserver stop
 Type=forking
 RestartSec=3s
 WorkingDirectory=/usr/local/vpnserver/
-ExecStartPre=/sbin/ip link set dev enxb827eb5f29f6 promisc on
+ExecStartPre=/sbin/ip link set dev eth0 promisc on
 
 [Install]
 WantedBy=multi-user.target
