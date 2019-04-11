@@ -35,7 +35,7 @@ Remote GPIO
 Advanced Options
 Expand Filesystem
 Over Screen
-Pixel Doubling
+//Pixel Doubling
 GL Driver
 
 #vim
@@ -271,6 +271,13 @@ bluetoothctl
 sudo cat /dev/input/js0
 
 #docker
+
+curl -sSL https://get.docker.com/ | sh
+sudo usermod -aG docker pi
+sudo systemctl enable docker
+//docker run --name rpi-raspbian-stretch -ti --privileged resin/rpi-raspbian:stretch /bin/bash
+
+/*
 cat /etc/os-release
 sudo apt-get update
 sudo apt-get install --yes \
@@ -295,8 +302,21 @@ exit
 sudo reboot
 
 docker run hello-world
+*/
 
 #docker-compose
+
+git clone https://github.com/docker/compose.git
+cd compose
+docker build -t docker-compose:armhf -f Dockerfile.armhf .
+docker run docker-compose:armhf version
+docker run --rm --entrypoint="script/build/linux-entrypoint" -v $(pwd)/dist:/code/dist -v $(pwd)/.git:/code/.git "docker-compose:armhf"
+cp dist/docker-compose-Linux-armv7l /usr/local/bin/docker-compose
+chown root:root /usr/local/bin/docker-compose
+chmod 755 /usr/local/bin/docker-compose
+docker-compose version
+
+/*
 git clone https://github.com/docker/compose.git
 cd compose
 sudo docker build -t docker-compose:armhf -f Dockerfile.armhf .
@@ -306,6 +326,7 @@ sudo docker run --rm --entrypoint="script/build/linux-entrypoint" -v (pwd)/dist:
 sudo cp dist/docker-compose-Linux-armv7l /usr/local/bin/docker-compose
 docker-compose --version
 docker-compose version 1.20.0dev, build 4ceeaad
+*/
 
 #ROS
 sudo apt-get install dirmngr
