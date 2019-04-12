@@ -5,6 +5,7 @@ sudo apt-get install rpi-update
 sudo rpi-update
 sudo reboot
 
+
 #raspi-config
 sudo raspi-config
 Network Options
@@ -38,9 +39,11 @@ Over Screen
 //Pixel Doubling
 GL Driver
 
+
 #vim
 sudo apt-get install vim
 git clone https://github.com/ei0410/vimrc.git
+
 
 #fix ip(dhcpcd.conf)
 sudo vim /etc/dhcpcd.conf
@@ -53,33 +56,6 @@ static ip_address=192.168.11.y/24
 static routers=192.168.11.1
 static domain_name_servers=8.8.8.8
 
-#delete pi and add user
-sudo passwd root
-su
-sudo adduser ei
-groups pi
-sudo usermod -G pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input,spi,gpio ei
-groups ei
-ssh pi@192.168.11.x
-sudo cp -r /home/pi/* /home/ei
-sudo  /etc/lightdm/lightdm.conf
-#autologin-user=pi
-sudo vim /etc/systemd/system/autologin@.service
-ExecStart=-/sbin/agetty --autologin ei --noclear %I $TERM
-who
-sudo passwd ei
-su ei
-
-userdel -r pi
-id -a pi
-
-#picamera
-sudo apt-get install libav-tools git python3-picamera python3-ws4py
-git clone https://github.com/waveform80/pistreaming.git
-cd pistreaming
-python3 server.py
-
-http://IP:8082
 
 #vpn
 sudo vim /etc/dhcpcd.conf
@@ -91,6 +67,7 @@ static domain_name_servers=192.168.x.1
 
 sudo vim /etc/network/interfaces
 
+auto eth0
 iface eth0 inet manual
 
 auto br0
@@ -100,7 +77,7 @@ bridge_maxwait 10
 
 sudo apt install bridge-utils -y
 
-softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-arm_eabi-32bit.tar.gz
+//softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-arm_eabi-32bit.tar.gz
 
 cd Download
 tar xvzf softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-arm_eabi-32bit.tar.gz
@@ -137,6 +114,7 @@ sudo systemctl start vpnserver
 sudo systemctl enable vpnserver
 sudo systemctl status vpnserver
 
+
 #tightVNC
 sudo apt update
 sudo apt install -y tightvncserver
@@ -145,6 +123,7 @@ sudo reboot
 
 windows10 remotedesktop
 Xong
+
 
 #samba
 sudo apt-get install usbmount
@@ -189,36 +168,14 @@ sudo /etc/init.d/samba restart
 
 \\192.168.11.x\pub
 
-#miniDLNA
 
-sudo apt update
-sudo apt install -y miniDLNA
-sudo vim /etc/minidlna.conf
+#picamera
+sudo apt-get install libav-tools git python3-picamera python3-ws4py
+git clone https://github.com/waveform80/pistreaming.git
+cd pistreaming
+python3 server.py
 
-media_dir=V,/media/pi/MYLINUXLIVE/videos
-media_dir=A,/media/pi/MYLINUXLIVE/audio
-
-db_dir=/media/pi/MYLINUXLIVE/cache/minidlna
-
-mkdir -p /media/pi/MYLINUXLIVE/videos
-mkdir -p /media/pi/MYLINUXLIVE/audio
-mkdir -p /media/pi/MYLINUXLIVE/cache/minidlna
-chown minidlna /media/pi/MYLINUXLIVE/cache/minidlna
-
-sudo vim /etc/init.d/minidlna
-
-do_start()
-{
-    ...
-    mkdir -p $PIDDIR && chown $USER:$GROUP $PIDDIR || return 2
-    #add sleep 60
-    sleep60
-    
-    ...
-}
-
-sudo systemctl start minidlna.service
-sudo systemctl enable minidlna.service
+http://IP:8082
 
 #wiringPi
 git clone git://git.drogon.net/wiringPi
@@ -226,6 +183,7 @@ cd wiringPi
 ./build
 sudo apt install sleepenh
 gpio readall
+
 
 #webiopi
 wget https://sourceforge.net/projects/webiopi/files/WebIOPi-0.7.1.tar.gz
@@ -246,6 +204,7 @@ http://IPアドレス:8000
 login
 user: webiopi
 pass: raspberry
+
 
 #bluetooth
 sudo apt install bluez bluez-hcidump libbluetooth-dev libusb-dev joystick libjack-jackd2-dev
@@ -269,6 +228,7 @@ sudo sixad -start &
 sudo systemctl enable sixad
 bluetoothctl
 sudo cat /dev/input/js0
+
 
 #docker
 
@@ -304,6 +264,7 @@ sudo reboot
 docker run hello-world
 */
 
+
 #docker-compose
 
 git clone https://github.com/docker/compose.git
@@ -327,6 +288,7 @@ sudo cp dist/docker-compose-Linux-armv7l /usr/local/bin/docker-compose
 docker-compose --version
 docker-compose version 1.20.0dev, build 4ceeaad
 */
+
 
 #ROS
 sudo apt-get install dirmngr
@@ -370,3 +332,56 @@ wstool merge -t src kinetic-custom_ros.rosinstall
 wstool update -t src
 
 sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
+
+
+#delete pi and add user
+sudo passwd root
+su
+sudo adduser ei
+groups pi
+sudo usermod -G pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input,spi,gpio ei
+groups ei
+ssh pi@192.168.11.x
+sudo cp -r /home/pi/* /home/ei
+sudo  /etc/lightdm/lightdm.conf
+#autologin-user=pi
+sudo vim /etc/systemd/system/autologin@.service
+ExecStart=-/sbin/agetty --autologin ei --noclear %I $TERM
+who
+sudo passwd ei
+su ei
+
+userdel -r pi
+id -a pi
+
+
+#miniDLNA
+
+sudo apt update
+sudo apt install -y miniDLNA
+sudo vim /etc/minidlna.conf
+
+media_dir=V,/media/pi/MYLINUXLIVE/videos
+media_dir=A,/media/pi/MYLINUXLIVE/audio
+
+db_dir=/media/pi/MYLINUXLIVE/cache/minidlna
+
+mkdir -p /media/pi/MYLINUXLIVE/videos
+mkdir -p /media/pi/MYLINUXLIVE/audio
+mkdir -p /media/pi/MYLINUXLIVE/cache/minidlna
+chown minidlna /media/pi/MYLINUXLIVE/cache/minidlna
+
+sudo vim /etc/init.d/minidlna
+
+do_start()
+{
+    ...
+    mkdir -p $PIDDIR && chown $USER:$GROUP $PIDDIR || return 2
+    #add sleep 60
+    sleep60
+    
+    ...
+}
+
+sudo systemctl start minidlna.service
+sudo systemctl enable minidlna.service
