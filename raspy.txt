@@ -1,3 +1,5 @@
+#raspberrypi update 
+
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
@@ -7,6 +9,7 @@ sudo reboot
 
 
 #raspi-config
+
 sudo raspi-config
 Network Options
 Hostname
@@ -41,12 +44,15 @@ GL Driver
 
 
 #vim
+
 sudo apt-get install vim
 git clone https://github.com/ei0410/vimrc.git
 
 
 #fix ip(dhcpcd.conf)
+
 sudo vim /etc/dhcpcd.conf
+
 interface eth0
 static ip_address=192.168.11.x/24
 static routers=192.168.11.1
@@ -58,26 +64,25 @@ static domain_name_servers=8.8.8.8
 
 
 #vpn
+
 sudo vim /etc/dhcpcd.conf
 
 interface br0
-static ip_address=192.168.x.y
-static routers=192.168.x.1
-static domain_name_servers=192.168.x.1
+static ip_address=192.168.11.y
+static routers=192.168.11.1
+static domain_name_servers=192.168.11.1
 
 sudo vim /etc/network/interfaces
 
 auto eth0
 iface eth0 inet manual
 
-auto br0
+//auto br0
 iface br0 inet manual
 bridge_ports eth0
 bridge_maxwait 10
 
 sudo apt install bridge-utils -y
-
-//softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-arm_eabi-32bit.tar.gz
 
 cd Download
 tar xvzf softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-arm_eabi-32bit.tar.gz
@@ -116,34 +121,40 @@ sudo systemctl status vpnserver
 
 
 #tightVNC
-sudo apt update
-sudo apt install -y tightvncserver
-sudo apt install -y xrdp
+
+sudo apt-get update
+sudo apt-get install -y tightvncserver
+sudo apt-get install -y xrdp
 sudo reboot
 
 windows10 remotedesktop
 Xong
+username
+password
 
 
 #samba
-sudo apt-get install usbmount
+
+sudo apt-get install -y usbmount
 sudo vim /etc/usbmount/usbmount.conf
+
 FS_MOUNTPOINT ="-fstype = vfat, uid = pi, gid = pi, iocharset = utf8, codepage = 932"
 df -h
 
 sudo apt-get install samba -y
-sudo apt-get install ntfs-3g
+sudo apt-get install ntfs-3g -y
 sudo fdisk -l
 sudo mkdir /mnt/usbhdd
 sudo mount -t ntfs-3g /dev/sda1 /mnt/usbhdd
 df -k
 
 sudo vim /etc/samba/smb.conf
+
 [global]
 dos charset = CP932
 unix charset = UTF-8
 
-guest account = ei
+guest account = pi
 
 [pub]
 path=/home/share
@@ -153,7 +164,7 @@ guest ok=yes
 guest only=yes
 
 [USBNAS]
-path=/media/ei/MYLINUXLIVE
+path=/media/pi/MYLINUXLIVE
 public = Yes
 read only = No
 browsable = Yes
@@ -175,9 +186,11 @@ git clone https://github.com/waveform80/pistreaming.git
 cd pistreaming
 python3 server.py
 
-http://IP:8082
+http://IPaddress:8082
+
 
 #wiringPi
+
 git clone git://git.drogon.net/wiringPi
 cd wiringPi
 ./build
@@ -186,6 +199,7 @@ gpio readall
 
 
 #webiopi
+
 wget https://sourceforge.net/projects/webiopi/files/WebIOPi-0.7.1.tar.gz
 tar xvzf WebIOPi-0.7.1.tar.gz
 cd WebIOPi-0.7.1
@@ -199,7 +213,7 @@ sudo systemctl start webiopi
 sudo systemctl enable webiopi
 sudo reboot
 
-http://IPアドレス:8000
+http://IPaddress:8000
 
 login
 user: webiopi
@@ -207,6 +221,7 @@ pass: raspberry
 
 
 #bluetooth
+
 sudo apt install bluez bluez-hcidump libbluetooth-dev libusb-dev joystick libjack-jackd2-dev
 sudo systemctl enable bluetooth.service
 sudo reboot
