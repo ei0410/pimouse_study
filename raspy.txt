@@ -348,10 +348,27 @@ exit
 sudo reboot
 
 docker run hello-world
+
+sudo dpkg -i containerd.io_1.2.5-1_armhf.deb
+sudo dpkg -i docker-ce-cli_18.09.4_3-0_debian-buster_armhf.deb
+sudo dpkg -i docker-ce_18.09.4_3-0_debian-buster_armhf.deb
 */
 
 
 #docker-compose
+sudo apt-get install python-pip
+sudo pip install --upgrade pip
+sudo pip install -I docker-compose
+sudo apt-get install libffi-dev
+sudo apt-get install libssl-dev
+
+sudo pip uninstall docker docker-compose
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install docker docker-compose
+
+sudo pip uninstall backports.ssl-match-hostname
+sudo apt-get install python-backports.ssl-match-hostname
 
 git clone https://github.com/docker/compose.git
 cd compose
