@@ -15,7 +15,7 @@ Network Options
 Hostname
 
 Boot Options
-Splash Screen
+//Splash Screen
 
 Localisation Options
 Change Locale
@@ -38,9 +38,9 @@ Remote GPIO
 
 Advanced Options
 Expand Filesystem
-Over Screen
+//Over Screen
 //Pixel Doubling
-GL Driver
+//GL Driver
 
 
 #vim
@@ -61,6 +61,77 @@ interface wlan0
 static ip_address=192.168.11.y/24
 static routers=192.168.11.1
 static domain_name_servers=8.8.8.8
+
+
+#WiFi AP
+
+sudo apt-get update
+sudo apt-get install hostapd dnsmasq -y
+
+sudo vim /etc/dhcpcd.conf
+interface eth0
+static ip_address=192.168.11.x/24
+static routers=192.168.11.1
+static domain_name_servers=192.168.11.1
+
+interface eth0
+fallback eth0
+
+denyinterfaces wlan0
+
+interface wlan0
+static ip_address=172.24.1.1/24
+static routers=172.24.1.1
+static domain_name_servers=172.24.1.1
+static broadcast 172.24.1.255
+
+sudo vim /etc/hostapd/hostapd.conf
+interface=wlan0
+driver=nl80211
+ssid=Pi3-AP
+hw_mode=g
+channel=6
+ieee80211n=1
+wmm_enabled=1
+ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_passphrase=raspberry
+rsn_pairwise=CCMP
+
+sudo vim /etc/default/hostapd
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+
+sudo vim /etc/dnsmasq.conf
+interface=wlan0
+listen-address=172.24.1.1
+server=8.8.8.8
+domain-needed
+bogus-priv
+dhcp-range=172.24.1.50,172.24.1.100,12h
+
+sudo vim /etc/rc.local
+service dnsmasq stop
+sleep 8
+service dnsmasq start
+iptables-restore < /etc/iptables.ipv4.nat
+
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+
+sudo vim /etc/sysctl.conf
+net.ipv4.ip_forward=1
+
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+sudo systemctl enable hostapd
+sudo systemctl enable dnsmasq
 
 
 #vpn
