@@ -436,6 +436,54 @@ wstool update -t src
 
 sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
 
+#ROS for RaspberrypiMouse
+git clone https://github.com/ryuichiueda/ros_setup_scripts_Ubuntu18.04_desktop.git
+cd ros_setup_scripts_Ubuntu18.04_desktop
+./step1.bash
+
+git clone https://github.com/rt-net/RaspberryPiMouse.git
+cd ~/RaspberryPiMouse/utils
+./build_install.bash
+
+sudo crontab -e
+
+@reboot /home/ubuntu/pimouse_setup/setup.bash
+
+sudo reboot
+
+sudo apt install -y wireles-tools
+cd /etc/netplan
+sudo cp 50-cloud-init.yaml 99-manual.yaml
+#sudo rm 50-cloud-init.yaml
+sudo vim 99-manual.yaml
+sudo apt install -y network-manager
+#sudo netplan apply
+
+sudo netplan --debug try
+sudo netplan --debug generate
+sudo netplan --debug apply
+sudo systemctl daemon-reload
+sudo netplan --debug apply
+
+network:
+    version: 2
+    ethernets:
+        eth0:
+            optional: true
+            dhcp4: true
+    wifis:
+        wlan0:
+            optional: true
+            access-points:
+                ei0124:
+                    password: "ei0124"
+            dhcp4: true
+
+sudo crontab -e
+
+@reboot /sbin/iwconfig wlan0 power off
+
+sudo reboot
 
 #delete pi and add user
 sudo passwd root
